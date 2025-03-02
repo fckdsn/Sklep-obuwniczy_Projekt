@@ -10,27 +10,77 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
 }
 
+/* Logo */
 .logo {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
+    color: black;
+    transition: color 0.5s;
 }
 
-input[type="email"] {
-    width: 80%;
+.dark-mode .logo {
+    color: white;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    font-size: 16px;
+    cursor: pointer;
+    color: gray;
+}
+
+.tab.active {
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+/* Inputs */
+input {
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+/* Forgot password */
+.forgot-password {
+    text-align: right;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.forgot-password a {
+    color: #2dbd6e;
+    text-decoration: none;
+}
+
 /* Buttons */
 .btn {
     display: block;
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin: 10px auto;
     border: none;
@@ -40,12 +90,83 @@ input[type="email"] {
     transition: background-color 0.5s, color 0.5s;
 }
 
-.btn-black { background-color: black; color: white; }
-.btn-facebook { background-color: #3b5998; color: white; } /* Facebook stays blue */
-.btn-google { background-color: #db4437; color: white; } /* Google stays red */
-.btn-apple { background-color: black; color: white; }
+.btn-black {
+    background-color: black;
+    color: white;
+}
 
-.login-link { margin-top: 20px; }
+.btn-google {
+    background-color: #db4437;
+}
+
+.btn-apple {
+    background-color: black;
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+}
+
+.btn-x {
+    background-color: black;
+}
+
+/* Terms and Privacy */
+.terms {
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+}
+
+.terms a {
+    color: black;
+    text-decoration: none;
+}
+
+/* Divider */
+.divider {
+    margin: 15px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+/* Social login buttons */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-buttons .btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-buttons img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Permanent Black Text */
+.permanent-black {
+    color: black !important;
+}
+
+/* Switch login/signup */
+.switch-link {
+    margin-top: 20px;
+}
+
+.switch-link a {
+    color: #2dbd6e;
+    text-decoration: none;
+}
 
 /* Theme Toggle Button */
 .theme-toggle {
@@ -67,8 +188,15 @@ input[type="email"] {
     --text-color: #ffffff;
 }
 
-.dark-mode .btn-black { background-color: white; color: black; }
-.dark-mode .btn-apple { background-color: white; color: black; }
+.dark-mode .btn-black {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode .btn-apple {
+    background-color: white;
+    color: black;
+}
 
 .dark-mode .theme-toggle {
     background-color: white;
