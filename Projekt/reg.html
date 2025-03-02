@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja | Shoe Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: var(--bg-color, #fff);
+            color: var(--text-color, #000);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color, #000);
+            transition: color 0.5s;
+        }
+        input[type="email"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: var(--input-bg, #fff);
+            color: var(--text-color, #000);
+            border: 1px solid var(--border-color, #000);
+            transition: background-color 0.5s, color 0.5s, border 0.5s;
+        }
+        .btn {
+            display: block;
+            width: 80%;
+            padding: 10px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: var(--btn-bg, #000);
+            color: var(--btn-text, white);
+            border: 1px solid var(--border-color, #000);
+            transition: background-color 0.5s, color 0.5s, border 0.5s;
+        }
+        .btn-facebook { background-color: #3b5998; color: white; }
+        .btn-google { background-color: #db4437; color: white; }
+        .login-link a {
+            color: var(--text-color, #000);
+            transition: color 0.5s;
+        }
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--btn-bg, #000);
+            color: var(--btn-text, white);
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --btn-bg: #ffffff;
+            --btn-text: #000000;
+            --input-bg: #333333;
+            --border-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Shoe Store</div>
+        <h2>Rejestracja uczestnika</h2>
+        <p>Zarejestruj się i zapoznaj się z informacjami o kuponach!</p>
+        <input type="email" placeholder="Wpisz swój email">
+        <button class="btn">Zarejestruj się</button>
+        <p>Zarejestruj się, używając identyfikatora poniżej</p>
+        <button class="btn btn-facebook">Facebook</button>
+        <button class="btn btn-google">Zaloguj się przez Google</button>
+        <button class="btn">Zaloguj się przez Apple</button>
+        <p class="login-link"><a href="#">logowanie</a></p>
+        <button class="theme-toggle" onclick="toggleTheme()">Zmień motyw</button>
+    </div>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
