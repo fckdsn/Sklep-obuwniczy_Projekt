@@ -1,0 +1,76 @@
+/* Default Light Theme */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--bg-color, #fff);
+    color: var(--text-color, #000);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+input[type="email"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.btn {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.btn-black { background-color: black; color: white; }
+.btn-facebook { background-color: #3b5998; color: white; } /* Facebook stays blue */
+.btn-google { background-color: #db4437; color: white; } /* Google stays red */
+.btn-apple { background-color: black; color: white; }
+
+.login-link { margin-top: 20px; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Dark Mode */
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+}
+
+.dark-mode .btn-black { background-color: white; color: black; }
+.dark-mode .btn-apple { background-color: white; color: black; }
+
+.dark-mode .theme-toggle {
+    background-color: white;
+    color: black;
+}
