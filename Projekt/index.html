@@ -4,178 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockX Clone</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #111;
-            color: white;
-        }
-        .header {
-            background-color: #222;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #58d68d;
-        }
-        .search-bar {
-            flex-grow: 1;
-            margin: 0 20px;
-        }
-        .search-bar input {
-            width: 100%;
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
-        }
-        .auth-buttons button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        .login {
-            background-color: #444;
-            color: white;
-        }
-        .signup {
-            background-color: white;
-            color: black;
-        }
-        .nav-bar {
-            background-color: #222;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .nav-bar a {
-            color: white;
-            text-decoration: none;
-        }
-        .container {
-            padding: 20px;
-        }
-        .banner {
-            background-color: #d32f2f;
-            padding: 20px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .product {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .footer {
-            background-color: #222;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            text-align: left;
-        }
-        .footer-column {
-            padding: 10px;
-        }
-        .footer-column h3 {
-            color: #58d68d;
-            font-size: 16px;
-        }
-        .footer-column a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            margin-top: 5px;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding: 10px;
-            background-color: #111;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <div class="logo">StockX Clone</div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for brand, color, etc.">
+
+    <!-- Верхній банер -->
+    <header>
+        <div class="top-bar">
+            <div class="logo">StockX</div>
+            <input type="text" class="search-bar" placeholder="Search for brand, color, etc.">
+            <div class="auth-buttons">
+                <button class="login">Login</button>
+                <button class="signup">Sign Up</button>
+            </div>
         </div>
-        <div class="auth-buttons">
-            <button class="login">Login</button>
-            <button class="signup">Sign Up</button>
+        <nav class="navbar">
+            <a href="#">Brands</a>
+            <a href="#">New</a>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Kids</a>
+            <a href="#">Sneakers</a>
+            <a href="#">Shoes</a>
+            <a href="#">Apparel</a>
+            <a href="#">Accessories</a>
+            <a href="#">More Categories</a>
+            <a href="#">Deals</a>
+        </nav>
+    </header>
+
+    <!-- Контент сайту -->
+    <main>
+        <h1>Welcome to StockX Clone</h1>
+        <p>Here you can find exclusive sneakers, apparel, and accessories.</p>
+    </main>
+
+    <!-- Нижній банер -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About</h3>
+                <a href="#">How It Works</a>
+                <a href="#">Verification</a>
+                <a href="#">Company</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-column">
+                <h3>Help</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Size Guide</a>
+            </div>
+            <div class="footer-column">
+                <h3>Popular Brands</h3>
+                <a href="#">Nike</a>
+                <a href="#">Adidas</a>
+                <a href="#">New Balance</a>
+                <a href="#">Jordan</a>
+            </div>
+            <div class="footer-column">
+                <h3>Accessories</h3>
+                <a href="#">Sunglasses</a>
+                <a href="#">Watches</a>
+                <a href="#">Bags</a>
+            </div>
         </div>
-    </div>
-    
-    <div class="nav-bar">
-        <a href="#">Brands</a>
-        <a href="#">New</a>
-        <a href="#">Men</a>
-        <a href="#">Women</a>
-        <a href="#">Kids</a>
-        <a href="#">Sneakers</a>
-        <a href="#">Shoes</a>
-        <a href="#">Apparel</a>
-        <a href="#">Accessories</a>
-        <a href="#">More Categories</a>
-        <a href="#">Deals</a>
-    </div>
-    
-    <div class="container">
-        <div class="banner">AJ12 Flu Game - Shop Now</div>
-        
-        <h2>Recommended For You</h2>
-        <div class="products">
-            <div class="product">Nike Air Force 1 - $173</div>
-            <div class="product">Stanley Tumbler - $119</div>
-            <div class="product">UGG Tazz Love Slipper - $145</div>
-            <div class="product">Supreme Beanie - $116</div>
-            <div class="product">ASICS GT-2160 - $166</div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StockX Clone. All rights reserved.</p>
         </div>
-    </div>
-    
-    <div class="footer">
-        <div class="footer-column">
-            <h3>About</h3>
-            <a href="#">How It Works</a>
-            <a href="#">Careers</a>
-            <a href="#">StockX Reviews</a>
-        </div>
-        <div class="footer-column">
-            <h3>Help</h3>
-            <a href="#">Help Center</a>
-            <a href="#">Contact Us</a>
-        </div>
-        <div class="footer-column">
-            <h3>Popular Brands</h3>
-            <a href="#">Nike</a>
-            <a href="#">Adidas</a>
-            <a href="#">New Balance</a>
-        </div>
-        <div class="footer-column">
-            <h3>Accessories</h3>
-            <a href="#">Sunglasses</a>
-            <a href="#">Bags</a>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        StockX Clone - All rights reserved © 2025
-    </div>
+    </footer>
+
 </body>
 </html>
