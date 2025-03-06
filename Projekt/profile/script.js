@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Елементи авторизації
+
     const loginBtn = document.querySelector('.login');
     const signupBtn = document.querySelector('.signup');
     const logoutBtn = document.querySelector('#logout');
@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeSwitch = document.getElementById("themeSwitch");
     const body = document.body;
 
-    // Перевіряємо статус авторизації
+
     let isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
-    // Функція оновлення UI авторизації
+
     function updateAuthUI() {
         if (isLoggedIn) {
             authButtons?.classList.add('hidden');
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Вхід
+
     loginBtn?.addEventListener('click', () => {
         localStorage.setItem('loggedIn', 'true');
         isLoggedIn = true;
