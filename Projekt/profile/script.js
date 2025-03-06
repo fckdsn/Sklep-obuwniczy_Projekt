@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateAuthUI();
     });
 
-    // Вихід
     logoutBtn?.addEventListener('click', () => {
         localStorage.removeItem('loggedIn');
         isLoggedIn = false;
