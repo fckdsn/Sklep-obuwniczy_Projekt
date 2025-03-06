@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         themeSwitch.textContent = "🌙 Dark Mode";
     }
 
-    // Перемикання теми
+
     themeSwitch?.addEventListener("click", () => {
         body.classList.toggle("light-theme");
 
