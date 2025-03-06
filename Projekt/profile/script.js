@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateAuthUI();
 
-    // Перевіряємо, чи є збережена тема
     if (localStorage.getItem("theme") === "light") {
         body.classList.add("light-theme");
         themeSwitch.textContent = "🌙 Dark Mode";
