@@ -141,7 +141,7 @@ body {
     height: 100%;
 }
 
-.profile-sidebar ul li:hover,
+/* Стиль для активного елемента */
 .profile-sidebar ul li.active {
     background-color: #616161;
     color: white;
@@ -149,6 +149,10 @@ body {
 
 .profile-sidebar ul li.active a {
     color: white;
+}
+
+.profile-sidebar ul li:hover {
+    background-color: #444;
 }
 
 .profile-content {
@@ -181,7 +185,7 @@ body {
 }
 
 .profile-btn:hover {
-    background-color: #ffffff;
+    background-color: #f0f0f0;
 }
 
 footer {
@@ -207,7 +211,7 @@ footer {
 }
 
 .footer-sections a:hover {
-    color: #ffffff;
+    color: #919191;
 }
 
 .footer-bottom {
@@ -232,9 +236,10 @@ footer {
 }
 
 #themeSwitch:hover {
-    background-color: #919191;
+    background-color: #818181;
 }
 
+/* Світла тема */
 .light-theme {
     background-color: white;
     color: black;
@@ -275,3 +280,4 @@ footer {
     background-color: #919191;
     color: black;
 }
+

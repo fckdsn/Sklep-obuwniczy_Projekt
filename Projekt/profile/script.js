@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const loginBtn = document.querySelector('.login');
     const signupBtn = document.querySelector('.signup');
     const logoutBtn = document.querySelector('#logout');
@@ -8,10 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeSwitch = document.getElementById("themeSwitch");
     const body = document.body;
 
-
     let isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
-
+    // Оновлення інтерфейсу аутентифікації
     function updateAuthUI() {
         if (isLoggedIn) {
             authButtons?.classList.add('hidden');
@@ -22,19 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
+    // Вхід
     loginBtn?.addEventListener('click', () => {
         localStorage.setItem('loggedIn', 'true');
         isLoggedIn = true;
         updateAuthUI();
     });
 
+    // Реєстрація
     signupBtn?.addEventListener('click', () => {
         localStorage.setItem('loggedIn', 'true');
         isLoggedIn = true;
         updateAuthUI();
     });
 
+    // Вихід
     logoutBtn?.addEventListener('click', () => {
         localStorage.removeItem('loggedIn');
         isLoggedIn = false;
@@ -43,11 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateAuthUI();
 
+    // Перемикання теми
     if (localStorage.getItem("theme") === "light") {
         body.classList.add("light-theme");
         themeSwitch.textContent = "🌙 Dark Mode";
     }
-
 
     themeSwitch?.addEventListener("click", () => {
         body.classList.toggle("light-theme");
@@ -58,6 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             localStorage.setItem("theme", "dark");
             themeSwitch.textContent = "☀ Light Mode";
+        }
+    });
+
+    // Підсвічування активного пункту меню
+    const currentPath = window.location.pathname.split('/').pop();
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    menuLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath) {
+            link.parentElement.classList.add('active');
         }
     });
 });

@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - StockX Clone</title>
+    <title>Wallet - StockX Clone</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <style>
+        .wallet-link {
+            text-decoration: none;
+            color: white;
+        }
+
+        .wallet-link:visited {
+            color: white;
+        }
+
+        .wallet-link:hover h3 {
+            color: #414141;
+        }
+
+        .light-theme .wallet-link {
+            color: black;
+        }
+
+        .light-theme .wallet-link:hover h3 {
+            color: #616161;
+        }
+
+        .wallet-link h3 {
+            transition: color 0.2s ease-in-out;
+        }
+
+        .wallet-card img {
+            transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .wallet-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
 
@@ -44,41 +78,32 @@
                 <h2>Test</h2>
             </div>
             <ul>
-                <li><a href="file:///C:/Users/timos/Documents/Sklep-obuwniczy_Projekt/Projekt/profile/profile.html" class="menu-link">Profile</a></li>
-                <li><a href="file:///C:/Users/timos/Documents/Sklep-obuwniczy_Projekt/Projekt/profile/Cart.html" class="menu-link">Cart</a></li>
-                <li><a href="file:///C:/Users/timos/Documents/Sklep-obuwniczy_Projekt/Projekt/profile/Selling.html" class="menu-link">Selling</a></li>
-                <li><a href="file:///C:/Users/timos/Documents/Sklep-obuwniczy_Projekt/Projekt/profile/Favorites.html" class="menu-link">Favorites</a></li>
-                <li><a href="file:///C:/Users/timos/Documents/Sklep-obuwniczy_Projekt/Projekt/profile/Wallet.html" class="menu-link">Wallet</a></li>
+                <li><a href="profile.html" class="menu-link">Profile</a></li>
+                <li><a href="Cart.html" class="menu-link">Cart</a></li>
+                <li><a href="Selling.html" class="menu-link">Selling</a></li>
+                <li><a href="Favorites.html" class="menu-link">Favorites</a></li>
+                <li class="active"><a href="Wallet.html" class="menu-link">Wallet</a></li>
                 <li><a href="#" class="menu-link">Settings</a></li>
                 <li id="logout"><a href="#" class="menu-link">Log Out</a></li>
             </ul>
-            
-            
         </aside>
 
-        <!-- Контент профілю -->
+        <!-- Контент Wallet -->
         <section class="profile-content">
-            <h1>Profile</h1>
-
-            <div class="profile-section">
-                <h3>Personal Information</h3>
-                <p><strong>Name:</strong> Test</p>
-                <p><strong>Username:</strong> sneakerhead7412626991775</p>
-                <p><strong>Email Address:</strong> test@gmail.com</p>
-                <p><strong>Shoe Size:</strong> Not Set</p>
-                <button class="profile-btn">Edit</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>Shipping Addresses</h3>
-                <p>You do not have a shipping address saved.</p>
-                <button class="profile-btn">Add</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>IDs & Verification</h3>
-                <p><strong>VAT ID:</strong> No VAT ID Provided (Optional)</p>
-                <button class="profile-btn">View</button>
+            <h1>Wallet</h1>
+            <div class="wallet-options">
+                <a href="AddCard.html" class="wallet-link">
+                    <div class="wallet-card">
+                        <img id="cardIcon" src="../images/card-icon.png" alt="Card Icon">
+                        <h3>Add Bank Card</h3>
+                    </div>
+                </a>
+                <a href="https://www.paypal.com/pl/home" target="_blank" class="wallet-link">
+                    <div class="wallet-card">
+                        <img id="paypalIcon" src="../images/paypal-icon.png" alt="PayPal Icon">
+                        <h3>Add PayPal</h3>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
@@ -122,6 +147,36 @@
     <div class="theme-toggle">
         <button id="themeSwitch">🌙 Switch Theme</button>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const body = document.body;
+            const cardIcon = document.getElementById("cardIcon");
+            const paypalIcon = document.getElementById("paypalIcon");
+
+            function updateIcons() {
+                cardIcon.style.opacity = 0;
+                paypalIcon.style.opacity = 0;
+                setTimeout(() => {
+                    if (body.classList.contains("light-theme")) {
+                        cardIcon.src = "../images/card-icon-light.png";
+                        paypalIcon.src = "../images/paypal-icon-light.png";
+                    } else {
+                        cardIcon.src = "../images/card-icon.png";
+                        paypalIcon.src = "../images/paypal-icon.png";
+                    }
+                    cardIcon.style.opacity = 1;
+                    paypalIcon.style.opacity = 1;
+                }, 100);
+            }
+
+            document.getElementById("themeSwitch").addEventListener("click", () => {
+                setTimeout(updateIcons, 100);
+            });
+
+            updateIcons();
+        });
+    </script>
 
 </body>
 </html>
