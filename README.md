@@ -1,4 +1,3 @@
-# Sklep-obuwniczy
 # Platforma sprzedażowa dla sklepów obuwniczych
 ## 1.Cel Projektu
 Stworzenie kompleksowej platformy e-commerce umożliwiającej sklepom obuwniczym sprzedaż produktów online. System ma zapewniać intuicyjną obsługę dla klientów, łatwe zarządzanie produktami przez sprzedawców oraz bezpieczną obsługę płatności.
