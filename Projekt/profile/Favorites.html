@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - StockX Clone</title>
+    <title>Favorites - StockX Clone</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -52,33 +52,13 @@
                 <li><a href="#" class="menu-link">Settings</a></li>
                 <li id="logout"><a href="#" class="menu-link">Log Out</a></li>
             </ul>
-            
-            
         </aside>
 
-        <!-- Контент профілю -->
+        <!-- Контент Favorites -->
         <section class="profile-content">
-            <h1>Profile</h1>
-
-            <div class="profile-section">
-                <h3>Personal Information</h3>
-                <p><strong>Name:</strong> Test</p>
-                <p><strong>Username:</strong> sneakerhead7412626991775</p>
-                <p><strong>Email Address:</strong> test@gmail.com</p>
-                <p><strong>Shoe Size:</strong> Not Set</p>
-                <button class="profile-btn">Edit</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>Shipping Addresses</h3>
-                <p>You do not have a shipping address saved.</p>
-                <button class="profile-btn">Add</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>IDs & Verification</h3>
-                <p><strong>VAT ID:</strong> No VAT ID Provided (Optional)</p>
-                <button class="profile-btn">View</button>
+            <h1>Favorites</h1>
+            <div id="favorite-items">
+                <p>No favorite items yet.</p>
             </div>
         </section>
     </main>
@@ -122,6 +102,25 @@
     <div class="theme-toggle">
         <button id="themeSwitch">🌙 Switch Theme</button>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const favoritesContainer = document.getElementById("favorite-items");
+            const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+            if (storedFavorites.length > 0) {
+                favoritesContainer.innerHTML = "";
+                storedFavorites.forEach(item => {
+                    const itemDiv = document.createElement("div");
+                    itemDiv.classList.add("favorite-item");
+                    itemDiv.innerHTML = `
+                        <p><strong>${item.name}</strong> - ${item.price} zł</p>
+                    `;
+                    favoritesContainer.appendChild(itemDiv);
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
