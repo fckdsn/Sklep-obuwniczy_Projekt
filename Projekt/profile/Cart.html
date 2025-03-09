@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - StockX Clone</title>
+    <title>Cart - StockX Clone</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -44,41 +44,23 @@
                 <h2>Test</h2>
             </div>
             <ul>
-                <li class="active">Profile</li>
-                <li><a href="file:///C:/Users/timos/Documents/Sklep-obuwniczy_Projekt/Projekt/profile/Cart.html">Cart</a></li>
-                <li>Selling</li>
-                <li>Favorites</li>
-                <li>Wallet</li>
-                <li>Settings</li>
-                <li id="logout">Log Out</li>
+                <li><a href="profile.html" class="menu-link">Profile</a></li>
+                <li class="active"><a href="Cart.html" class="menu-link">Cart</a></li>
+                <li><a href="#" class="menu-link">Selling</a></li>
+                <li><a href="#" class="menu-link">Favorites</a></li>
+                <li><a href="#" class="menu-link">Wallet</a></li>
+                <li><a href="#" class="menu-link">Settings</a></li>
+                <li id="logout"><a href="#" class="menu-link">Log Out</a></li>
             </ul>
-            
         </aside>
 
-        <!-- Контент профілю -->
+        <!-- Контент корзини -->
         <section class="profile-content">
-            <h1>Profile</h1>
-
-            <div class="profile-section">
-                <h3>Personal Information</h3>
-                <p><strong>Name:</strong> Test</p>
-                <p><strong>Username:</strong> sneakerhead7412626991775</p>
-                <p><strong>Email Address:</strong> test@gmail.com</p>
-                <p><strong>Shoe Size:</strong> Not Set</p>
-                <button class="profile-btn">Edit</button>
+            <h1>Shopping Cart</h1>
+            <div id="cart-items">
+                <p>Your cart is empty.</p>
             </div>
-
-            <div class="profile-section">
-                <h3>Shipping Addresses</h3>
-                <p>You do not have a shipping address saved.</p>
-                <button class="profile-btn">Add</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>IDs & Verification</h3>
-                <p><strong>VAT ID:</strong> No VAT ID Provided (Optional)</p>
-                <button class="profile-btn">View</button>
-            </div>
+            <button class="profile-btn" id="checkout-btn">Proceed to Checkout</button>
         </section>
     </main>
 
@@ -121,6 +103,25 @@
     <div class="theme-toggle">
         <button id="themeSwitch">🌙 Switch Theme</button>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartContainer = document.getElementById("cart-items");
+            const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+            
+            if (storedCart.length > 0) {
+                cartContainer.innerHTML = "";
+                storedCart.forEach(item => {
+                    const itemDiv = document.createElement("div");
+                    itemDiv.classList.add("cart-item");
+                    itemDiv.innerHTML = `
+                        <p><strong>${item.name}</strong> - ${item.price} zł</p>
+                    `;
+                    cartContainer.appendChild(itemDiv);
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>

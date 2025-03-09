@@ -36,6 +36,7 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Tabs */
 .tabs {
     display: flex;
     justify-content: space-around;
@@ -73,7 +74,7 @@ input {
 }
 
 .forgot-password a {
-    color: #2dbd6e;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -90,25 +91,66 @@ input {
     transition: background-color 0.5s, color 0.5s;
 }
 
-.btn-black {
-    background-color: black;
-    color: white;
+/* Постоянно черная кнопка (Log In, Apple) */
+.btn-permanent-black {
+    background-color: black !important;
+    color: white !important;
 }
 
+/* Social Login Buttons */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Социальные кнопки - НЕ меняют цвет */
 .btn-google {
-    background-color: #db4437;
-}
-
-.btn-apple {
-    background-color: black;
+    background-color: #db4437 !important;
+    color: white !important;
 }
 
 .btn-facebook {
-    background-color: #3b5998;
+    background-color: #ffffff !important;
+    color: white !important;
+}
+
+.btn-apple {
+    background-color: black !important;
+    color: white !important;
 }
 
 .btn-x {
-    background-color: black;
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Убираем инверсию цвета иконок */
+.social-buttons img {
+    width: 24px;
+    height: 24px;
+    filter: none !important;
+}
+
+/* Тёмная тема - Социальные кнопки остаются своего цвета */
+.dark-mode .btn-google {
+    background-color: #db4437 !important;
+}
+
+.dark-mode .btn-facebook {
+    background-color: #ffffff !important;
+}
+
+.dark-mode .btn-apple {
+    background-color: black !important;
+}
+
+.dark-mode .btn-x {
+    background-color: black !important;
+}
+
+.dark-mode .social-buttons img {
+    filter: none !important;
 }
 
 /* Terms and Privacy */
@@ -131,40 +173,13 @@ input {
     color: gray;
 }
 
-/* Social login buttons */
-.social-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.social-buttons .btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-buttons img {
-    width: 24px;
-    height: 24px;
-}
-
-/* Permanent Black Text */
-.permanent-black {
-    color: black !important;
-}
-
 /* Switch login/signup */
 .switch-link {
     margin-top: 20px;
 }
 
 .switch-link a {
-    color: #2dbd6e;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -188,17 +203,12 @@ input {
     --text-color: #ffffff;
 }
 
-.dark-mode .btn-black {
-    background-color: white;
-    color: black;
+/* Логотип и заголовки остаются черными */
+.permanent-black {
+    color: black !important;
 }
 
-.dark-mode .btn-apple {
-    background-color: white;
-    color: black;
-}
-
-.dark-mode .theme-toggle {
-    background-color: white;
-    color: black;
+/* Тёмная тема */
+.dark-mode .permanent-black {
+    color: black !important;
 }
