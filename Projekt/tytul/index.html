@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockX Clone</title>
+    <title>BIDBoots</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
 </head>
 <body>
 
     <!-- Верхній банер -->
     <header>
         <div class="top-bar">
-            <div class="logo">StockX</div>
+            <div class="logo">BIDBoots</div>
             <input type="text" class="search-bar" placeholder="Search for brand, color, etc.">
             <div class="auth-buttons">
                 <button class="login">Login</button>
@@ -23,18 +25,6 @@
                 <a href="#">Brands</a>
                 <div class="dropdown-content">
                     <div class="brands-container">
-                        <!-- All Brands -->
-                        <div>
-                            <h3>All Brands</h3>
-                            <div class="all-brands">
-                                <p>A</p> <p>B</p> <p>C</p> <p>D</p> <p>E</p>
-                                <p>F</p> <p>G</p> <p>H</p> <p>I</p> <p>J</p>
-                                <p>K</p> <p>L</p> <p>M</p> <p>N</p> <p>O</p>
-                                <p>P</p> <p>Q</p> <p>R</p> <p>S</p> <p>T</p>
-                                <p>U</p> <p>V</p> <p>W</p> <p>X</p> <p>Y</p>
-                                <p>Z</p> <p>#</p>
-                            </div>
-                        </div>
                         <!-- Top Brands -->
                         <div>
                             <h3>Top Brands</h3>
@@ -68,15 +58,7 @@
                 <a href="#">New</a>
                 <div class="dropdown-content">
                     <div class="new-container">
-                        <div>
-                            <h3>Top 40 Trending Products</h3>
-                            <p>Top 40 Sneakers</p>
-                            <p>Top 40 Shoes</p>
-                            <p>Top 40 Apparel</p>
-                            <p>Top 40 Accessories</p>
-                            <p>Top 40 Collectibles</p>
-                            <p>Top 40 Trading Cards</p>
-                        </div>
+                        
                         <div>
                             <h3>Trending Brands</h3>
                             <p>ASICS</p>
@@ -86,16 +68,6 @@
                             <p>Pokémon</p>
                             <p>Stanley</p>
                             <p>UGG</p>
-                        </div>
-                        <div>
-                            <h3>Featured New Products</h3>
-                            <p>AJ4 Seafoam Sail</p>
-                            <p>AJ12 Flu Game</p>
-                            <p>Crocs x BAPE</p>
-                            <p>Pokémon 151 Blooming Waters Premium Collection Box</p>
-                            <p>Pop Mart Labubu Let's Checkmate Plush Doll</p>
-                            <p>Supreme x Jordan</p>
-                            <p>Louis Vuitton x Murakami</p>
                         </div>
                         <div>
                             <h3>Releases</h3>
@@ -132,14 +104,6 @@
                             <p>Yeezy</p>
                         </div>
                         <div>
-                            <h3>Steals & Deals</h3>
-                            <p>Under $50</p>
-                            <p>Under $100</p>
-                            <p>Under $150</p>
-                            <p>Below Retail</p>
-                            <p>Trending Deals</p>
-                        </div>
-                        <div>
                             <h3>Discover More</h3>
                             <p>Crocs by Salehe Bembury</p>
                             <p>Crocs Monsters Inc. Sulley</p>
@@ -158,82 +122,15 @@
                             <p>UGG Lowmel</p>
                             <p>Timberland 6" Boot</p>
                             <p>UGG Tasman Slipper</p>
-                        </div>
-                        <div>
-                            <h3>Luxury Brands</h3>
-                            <p>Balenciaga</p>
-                            <p>Chanel</p>
-                            <p>Dior</p>
-                            <p>Gucci</p>
-                            <p>Hermes</p>
-                            <p>Prada</p>
-                            <p>Versace</p>
                         </div>
                     </div>
                 </div>
             </div>            
-
-            <div class="dropdown">
-                <a href="#">Boots</a>
-                <div class="dropdown-content">
-                    <div class="boots-container">
-                        <div>
-                            <h3>Top Brands</h3>
-                            <p>Birkenstock</p>
-                            <p>Clarks</p>
-                            <p>Crocs</p>
-                            <p>Dr. Martens</p>
-                            <p>Timberland</p>
-                            <p>UGG</p>
-                            <p>Yeezy</p>
-                        </div>
-                        <div>
-                            <h3>Steals & Deals</h3>
-                            <p>Under $50</p>
-                            <p>Under $100</p>
-                            <p>Under $150</p>
-                            <p>Below Retail</p>
-                            <p>Trending Deals</p>
-                        </div>
-                        <div>
-                            <h3>Discover More</h3>
-                            <p>Crocs by Salehe Bembury</p>
-                            <p>Crocs Monsters Inc. Sulley</p>
-                            <p>Gucci Slides</p>
-                            <p>Timberland Boots</p>
-                            <p>UGG Boots</p>
-                            <p>UGG Platforms</p>
-                            <p>UGG Slippers</p>
-                        </div>
-                        <div>
-                            <h3>Top Products</h3>
-                            <p>Birkenstock Boston</p>
-                            <p>Crocs Lightning McQueen</p>
-                            <p>Crocs x BAPE</p>
-                            <p>UGG Tazz</p>
-                            <p>UGG Lowmel</p>
-                            <p>Timberland 6" Boot</p>
-                            <p>UGG Tasman Slipper</p>
-                        </div>
-                        <div>
-                            <h3>Luxury Brands</h3>
-                            <p>Balenciaga</p>
-                            <p>Chanel</p>
-                            <p>Dior</p>
-                            <p>Gucci</p>
-                            <p>Hermes</p>
-                            <p>Prada</p>
-                            <p>Versace</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
     </header>
 
     <!-- Контент сайту -->
     <main>
-        <h1>Welcome to StockX Clone</h1>
+        <h1>Welcome to BIDBoots</h1>
         <p>Here you can find exclusive sneakers, apparel, and accessories.</p>
     </main>
 
@@ -267,9 +164,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 StockX Clone. All rights reserved.</p>
+            <p>&copy; 2025 BIDBoots. All rights reserved.</p>
         </div>
     </footer>
+    <!-- Кнопка перемикання теми -->
+<div class="theme-toggle">
+    <button id="themeSwitch">🌙 Switch Theme</button>
+</div>
 
 </body>
 </html>
