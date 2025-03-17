@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.querySelector('#logout');
     const authButtons = document.querySelector('.auth-buttons');
     const profileIcon = document.querySelector('.profile-icon');
-    const themeSwitch = document.getElementById("themeSwitch");
-    const body = document.body;
+    const menuLinks = document.querySelectorAll('.menu-link');
+    const tabContents = document.querySelectorAll('.tab-content');
 
     let isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
@@ -43,32 +43,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateAuthUI();
 
-    // Перемикання теми
-    if (localStorage.getItem("theme") === "light") {
-        body.classList.add("light-theme");
-        themeSwitch.textContent = "🌙 Dark Mode";
-    }
-
-    themeSwitch?.addEventListener("click", () => {
-        body.classList.toggle("light-theme");
-
-        if (body.classList.contains("light-theme")) {
-            localStorage.setItem("theme", "light");
-            themeSwitch.textContent = "🌙 Dark Mode";
-        } else {
-            localStorage.setItem("theme", "dark");
-            themeSwitch.textContent = "☀ Light Mode";
-        }
+    // Відображення першої вкладки (Profile) за замовчуванням
+    tabContents.forEach(content => {
+        content.style.display = content.id === 'profile' ? 'block' : 'none';
     });
 
-    // Підсвічування активного пункту меню
-    const currentPath = window.location.pathname.split('/').pop();
-    const menuLinks = document.querySelectorAll('.menu-link');
-
+    // Перемикання вкладок
     menuLinks.forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        if (linkPath === currentPath) {
-            link.parentElement.classList.add('active');
-        }
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Забороняємо стандартну поведінку <a>
+
+            menuLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            const tab = link.getAttribute('data-tab');
+            tabContents.forEach(content => {
+                content.style.display = content.id === tab ? 'block' : 'none';
+            });
+        });
     });
 });
