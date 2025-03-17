@@ -1,25 +1,32 @@
+/* Основні змінні для теми */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #000000;
+    --secondary-bg-color: #f2f2f2;
+}
 /* Загальні стилі */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
     margin: 0;
     padding: 0;
-    transition: 0.3s ease;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
+/* Верхній банер */
 .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--secondary-bg-color);
     padding: 10px 20px;
-    background-color: #1a1a1a;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #919191;
+    color: var(--accent-color);
 }
 
 .search-bar {
@@ -28,26 +35,103 @@ body {
     padding: 8px;
     border-radius: 4px;
     border: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #222;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
+.auth-buttons button {
     padding: 8px 15px;
-}
-
-.navbar a:hover {
-    background-color: #ffffff;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
     border-radius: 4px;
 }
 
+.login {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.signup {
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+/* Навігаційна панель */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-bg-color);
+    padding: 10px;
+    gap: 15px;
+}
+
+.navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 15px;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 4px;
+}
+
+
+/* Випадаюче меню */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    width: 900px;
+    padding: 20px;
+    border-radius: 5px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.dropdown-content h3 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.dropdown-content p {
+    margin: 3px 0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdown-content p:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Профіль */
 .profile-icon {
     position: relative;
     cursor: pointer;
@@ -57,7 +141,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #ffffff;
+    border: 2px solid #000;
 }
 
 .profile-dropdown {
@@ -65,7 +149,8 @@ body {
     position: absolute;
     right: 0;
     top: 50px;
-    background-color: #222;
+    background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     width: 150px;
@@ -77,17 +162,19 @@ body {
 }
 
 .profile-dropdown a {
-    color: white;
+    color: #000;
     display: block;
     text-decoration: none;
     padding: 8px;
 }
 
 .profile-dropdown a:hover {
-    background-color: #ffffff;
-    color: #000;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
 }
 
+/* Контейнер профілю */
 .profile-container {
     display: flex;
     max-width: 1200px;
@@ -96,9 +183,10 @@ body {
 
 .profile-sidebar {
     width: 250px;
-    background-color: #1a1a1a;
+    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .profile-info {
@@ -110,11 +198,11 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid #ffffff;
+    border: 3px solid #000;
 }
 
 .profile-info h2 {
-    color: #ffffff;
+    color: #000;
 }
 
 .profile-sidebar ul {
@@ -125,72 +213,72 @@ body {
 .profile-sidebar ul li {
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
-    color: white;
-    font-weight: normal;
-    text-decoration: none;
+    color: #000;
+    transition: background-color 0.3s ease;
 }
 
 .profile-sidebar ul li a {
-    color: white;
+    color: #000;
     text-decoration: none;
-    font-weight: normal;
     display: block;
-    width: 100%;
-    height: 100%;
 }
 
-/* Стиль для активного елемента */
 .profile-sidebar ul li.active {
-    background-color: #616161;
-    color: white;
+    background-color: #000;
+    color: #fff;
 }
 
 .profile-sidebar ul li.active a {
-    color: white;
+    color: #fff;
 }
 
 .profile-sidebar ul li:hover {
-    background-color: #444;
+    background-color: #ccc;
 }
 
+/* Контент профілю */
 .profile-content {
     flex-grow: 1;
-    background-color: #222;
+    background-color: #fff;
     padding: 20px;
     margin-left: 20px;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .profile-section {
-    background-color: #1a1a1a;
+    background-color: #f9f9f9;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .profile-section h3 {
-    color: #ffffff;
+    color: #000;
 }
 
 .profile-btn {
-    background-color: #ffffff;
-    color: #000;
+    background-color: #000;
+    color: #fff;
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 4px;
     border: none;
-    transition: 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .profile-btn:hover {
-    background-color: #f0f0f0;
+    background-color: #333;
 }
 
+/* Footer */
 footer {
-    background-color: #1a1a1a;
+    background-color: #f2f2f2;
     margin-top: 50px;
+    border-top: 1px solid #ccc;
 }
 
 .footer-sections {
@@ -200,84 +288,24 @@ footer {
 }
 
 .footer-sections h3 {
-    color: #ffffff;
+    color: #000;
 }
 
 .footer-sections a {
-    color: #ffffff;
+    color: #000;
     display: block;
     text-decoration: none;
     margin: 5px 0;
+    transition: color 0.3s;
 }
 
 .footer-sections a:hover {
-    color: #919191;
+    color: #555;
 }
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid #333;
+    border-top: 1px solid #ccc;
     padding: 10px;
+    color: #777;
 }
-
-.theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-}
-
-#themeSwitch {
-    background-color: #919191;
-    color: black;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#themeSwitch:hover {
-    background-color: #818181;
-}
-
-/* Світла тема */
-.light-theme {
-    background-color: white;
-    color: black;
-}
-
-.light-theme .top-bar,
-.light-theme .navbar,
-.light-theme .profile-sidebar,
-.light-theme .profile-content,
-.light-theme .profile-section,
-.light-theme footer {
-    background-color: #f0f0f0;
-    color: black;
-}
-
-.light-theme .profile-info h2,
-.light-theme .profile-section h3,
-.light-theme .footer-sections h3,
-.light-theme .footer-sections a,
-.light-theme .profile-sidebar ul li a {
-    color: black;
-}
-
-.light-theme .profile-sidebar ul li.active {
-    background-color: #919191;
-    color: black;
-}
-
-.light-theme .profile-sidebar ul li {
-    color: black;
-}
-
-.light-theme .navbar a {
-    color: black;
-}
-
-.light-theme .profile-btn {
-    background-color: #919191;
-    color: black;
-}
-

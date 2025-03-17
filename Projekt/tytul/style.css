@@ -1,17 +1,9 @@
-/* Основні змінні для світлої теми */
+/* Основні змінні для теми */
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --accent-color: #000000;
     --secondary-bg-color: #f2f2f2;
-}
-
-/* Темна тема */
-.dark-theme {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --accent-color: #ffffff;
-    --secondary-bg-color: #1a1a1a;
 }
 
 /* Загальні стилі */
@@ -179,33 +171,4 @@ footer {
     text-align: center;
     border-top: 1px solid var(--accent-color);
     padding-top: 10px;
-}
-.theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-#themeSwitch {
-    background-color: var(--secondary-bg-color);
-    color: var(--text-color);
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#themeSwitch:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
-
-/* Позиція кнопки як на скріншоті */
-.theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
 }
