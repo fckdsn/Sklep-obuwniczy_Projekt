@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
-<body>
 
+<body>
     <!-- Верхній банер -->
     <header>
         <div class="top-bar">
@@ -26,18 +27,87 @@
                 </div>
             </div>
         </div>
-    
-        <nav class="navbar">
-            <a href="../tytul/index.html">Home</a>
-            <a href="#">Brands</a>
-            <a href="#">Shoes</a>
-            <a href="#">Boots</a>
-        </nav>
     </header>
-    
+
+    <!-- Навігація -->
+    <nav class="navbar">
+        <div class="dropdown">
+            <a href="#">Brands</a>
+            <div class="dropdown-content">
+                <div class="brands-container">
+                    <div>
+                        <h3>Top Brands</h3>
+                        <div class="top-brands">
+                            <p>Nike</p><p>Jordan</p><p>adidas</p><p>Fear of God</p>
+                            <p>New Balance</p><p>ASICS</p><p>Supreme</p><p>UGG</p>
+                            <p>Crocs</p><p>Pop Mart</p><p>Yeezy</p><p>BAPE</p>
+                            <p>Puma</p><p>LEGO</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Trending Brands</h3>
+                        <div class="trending-brands">
+                            <p>Louis Vuitton</p><p>Denim Tears</p><p>Sp5der</p><p>Pokemon</p>
+                            <p>Gucci</p><p>OFF-WHITE</p><p>Balenciaga</p><p>Travis Scott</p>
+                            <p>Timberland</p><p>Kith</p><p>Maison Mihara Yasuhiro</p><p>Converse</p>
+                            <p>Hellstar</p><p>Burberry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">New</a>
+            <div class="dropdown-content">
+                <div class="new-container">
+                    <div>
+                        <h3>Trending Brands</h3>
+                        <p>ASICS</p><p>Denim Tears</p><p>Hellstar</p><p>Pop Mart</p>
+                        <p>Pokémon</p><p>Stanley</p><p>UGG</p>
+                    </div>
+                    <div>
+                        <h3>Releases</h3>
+                        <p>Upcoming Sneakers</p><p>Recent Sneakers</p><p>Recent Apparel</p>
+                        <p>Recent Accessories</p><p>Recent Collectibles</p><p>View All Upcoming</p>
+                    </div>
+                    <div>
+                        <h3>News & Highlights</h3>
+                        <p>Shareable Lists</p><p>Xpress Shipping</p><p>Big Facts Report</p>
+                        <p>Picks For Her</p><p>Tell your friends - Give $10, get $10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Shoes</a>
+            <div class="dropdown-content">
+                <div class="shoes-container">
+                    <div>
+                        <h3>Top Brands</h3>
+                        <p>Birkenstock</p><p>Clarks</p><p>Crocs</p><p>Dr. Martens</p>
+                        <p>Timberland</p><p>UGG</p><p>Yeezy</p>
+                    </div>
+                    <div>
+                        <h3>Discover More</h3>
+                        <p>Crocs by Salehe Bembury</p><p>Crocs Monsters Inc. Sulley</p>
+                        <p>Gucci Slides</p><p>Timberland Boots</p><p>UGG Boots</p>
+                        <p>UGG Platforms</p><p>UGG Slippers</p>
+                    </div>
+                    <div>
+                        <h3>Top Products</h3>
+                        <p>Birkenstock Boston</p><p>Crocs Lightning McQueen</p>
+                        <p>Crocs x BAPE</p><p>UGG Tazz</p><p>UGG Lowmel</p>
+                        <p>Timberland 6" Boot</p><p>UGG Tasman Slipper</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Основний контент -->
     <main class="profile-container">
-        <!-- Ліве бокове меню -->
         <aside class="profile-sidebar">
             <div class="profile-info">
                 <img src="../images/profile-icon.png" alt="Profile Avatar">
@@ -52,15 +122,10 @@
                 <li><a href="#" class="menu-link">Settings</a></li>
                 <li id="logout"><a href="#" class="menu-link">Log Out</a></li>
             </ul>
-            
-            
-            
         </aside>
 
-        <!-- Контент профілю -->
         <section class="profile-content">
             <h1>Profile</h1>
-
             <div class="profile-section">
                 <h3>Personal Information</h3>
                 <p><strong>Name:</strong> Test</p>
@@ -68,18 +133,6 @@
                 <p><strong>Email Address:</strong> test@gmail.com</p>
                 <p><strong>Shoe Size:</strong> Not Set</p>
                 <button class="profile-btn">Edit</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>Shipping Addresses</h3>
-                <p>You do not have a shipping address saved.</p>
-                <button class="profile-btn">Add</button>
-            </div>
-
-            <div class="profile-section">
-                <h3>IDs & Verification</h3>
-                <p><strong>VAT ID:</strong> No VAT ID Provided (Optional)</p>
-                <button class="profile-btn">View</button>
             </div>
         </section>
     </main>
@@ -89,40 +142,26 @@
         <div class="footer-sections">
             <div>
                 <h3>About</h3>
-                <a href="#">How It Works</a>
-                <a href="#">Verification</a>
-                <a href="#">Company</a>
-                <a href="#">Careers</a>
+                <a href="#">How It Works</a><a href="#">Verification</a>
+                <a href="#">Company</a><a href="#">Careers</a>
             </div>
             <div>
                 <h3>Help</h3>
-                <a href="#">Help Center</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Size Guide</a>
+                <a href="#">Help Center</a><a href="#">Contact Us</a><a href="#">Size Guide</a>
             </div>
             <div>
                 <h3>Popular Brands</h3>
-                <a href="#">Nike</a>
-                <a href="#">Adidas</a>
-                <a href="#">New Balance</a>
-                <a href="#">Jordan</a>
+                <a href="#">Nike</a><a href="#">Adidas</a><a href="#">New Balance</a><a href="#">Jordan</a>
             </div>
             <div>
                 <h3>Accessories</h3>
-                <a href="#">Sunglasses</a>
-                <a href="#">Watches</a>
-                <a href="#">Bags</a>
+                <a href="#">Sunglasses</a><a href="#">Watches</a><a href="#">Bags</a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 BIDBoots. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Перемикач теми -->
-    <div class="theme-toggle">
-        <button id="themeSwitch">🌙 Switch Theme</button>
-    </div>
-
 </body>
+
 </html>
