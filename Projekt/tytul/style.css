@@ -137,38 +137,38 @@ main {
     padding: 50px 20px;
 }
 
-/* Нижній банер */
+/* Footer */
 footer {
-    background-color: var(--secondary-bg-color);
-    padding: 20px;
+    background-color: #f2f2f2;
     margin-top: 50px;
+    border-top: 1px solid #ccc;
 }
 
-.footer-container {
+.footer-sections {
     display: flex;
     justify-content: space-around;
-    padding-bottom: 20px;
+    padding: 20px;
 }
 
-.footer-column h3 {
-    margin-bottom: 10px;
-    color: var(--accent-color);
+.footer-sections h3 {
+    color: #000;
 }
 
-.footer-column a {
+.footer-sections a {
+    color: #000;
     display: block;
-    color: var(--text-color);
     text-decoration: none;
     margin: 5px 0;
-    font-weight: 600;
+    transition: color 0.3s;
 }
 
-.footer-column a:hover {
-    color: var(--accent-color);
+.footer-sections a:hover {
+    color: #555;
 }
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid var(--accent-color);
-    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    color: #777;
 }
