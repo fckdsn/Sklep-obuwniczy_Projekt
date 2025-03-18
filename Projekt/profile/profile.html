@@ -138,6 +138,61 @@
                 <h1>Shopping Cart</h1>
                 <div id="cart-items">
                     <p>Your cart is empty.</p>
+                </div>
+            </div>
+
+            <div class="tab-content" id="selling">
+                <h1>My Selling Items</h1>
+                <div id="selling-form">
+                    <h3>Add New Item for Sale</h3>
+                    <input type="text" id="item-name" placeholder="Item Name">
+                    <input type="number" id="item-price" placeholder="Price (USD)">
+                    <input type="text" id="item-description" placeholder="Description">
+                    <button onclick="addSellingItem()">Add Item</button>
+                </div>
+                <div id="selling-items">
+                    <p>No items listed for sale.</p>
+                </div>
+            </div>
+
+            <div class="tab-content" id="favorites">
+                <h1>Favorites</h1>
+                <div id="favorite-items">
+                    <p>No favorite items.</p>
+                </div>
+            </div>
+
+            <div class="tab-content" id="wallet">
+                <h1>Wallet</h1>
+                <div class="wallet-options">
+                    <div class="wallet-method" id="add-card" onclick="showCardForm()">
+                        <img src="../images/card-icon.png" alt="Bank Card" class="clickable-icon larger-icon">
+                    </div>
+                    <div class="wallet-method" id="add-paypal" onclick="addPayPal()">
+                        <img src="../images/paypal-icon.png" alt="PayPal" class="clickable-icon larger-icon">
+                    </div>
+                </div>
+            
+                <!-- Форма добавления кредитной карты -->
+                <div class="card-form-container hidden" id="card-form">
+                    <h2>Add Credit Card</h2>
+                    <input type="text" id="card-number" placeholder="Card Number">
+                    <input type="text" id="card-name" placeholder="Name on Card">
+                    <input type="text" id="card-expiry" placeholder="MM/YY">
+                    <input type="text" id="card-cvv" placeholder="CVV">
+                    <button onclick="saveCard()">Done</button>
+                </div>
+            
+                <!-- Список добавленных методов оплаты -->
+                <div class="saved-methods">
+                    <h2>Saved Payment Methods</h2>
+                    <ul id="saved-payments">
+                        <li>No saved payment methods.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
         </section>
     </main>
 
