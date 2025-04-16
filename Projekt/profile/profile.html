@@ -17,15 +17,14 @@
             <input type="text" class="search-bar" placeholder="Search for brand, color, etc.">
             <div class="auth-container">
                 <div class="profile-icon">
-                    <img src="../images/profile-icon.png" alt="Profile">
+                    <img src="../images/profile-icon.png" alt="Profile Avatar">
                     <div class="profile-dropdown">
                         <a href="profile.html">My Profile</a>
-                        <a href="#">Orders</a>
-                        <a href="#">Settings</a>
-                        <a href="#" id="logout">Log Out</a>
+                        <a href="../profile/orders.html">Orders</a>
+                        <a href="../register/login.html">Log Out</a>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
     </header>
 
@@ -114,10 +113,10 @@
             <ul>
                 <li class="menu-link active" data-tab="profile">Profile</li>
                 <li class="menu-link" data-tab="cart">Cart</li>
-                <li class="menu-link" data-tab="selling">Selling</li>
+                <li class="menu-link" data-tab="address">Addresses</li>
                 <li class="menu-link" data-tab="favorites">Favorites</li>
                 <li class="menu-link" data-tab="wallet">Wallet</li>
-                <li id="logout">Log Out</li>
+                <li><a href="../register/login.html">Log Out</a></li>
             </ul>
         </aside>
 
@@ -126,11 +125,11 @@
                 <h1>Profile</h1>
                 <div class="profile-section">
                     <h3>Personal Information</h3>
-                    <p><strong>Name:</strong> Test</p>
-                    <p><strong>Username:</strong> sneakerhead7412626991775</p>
-                    <p><strong>Email Address:</strong> test@gmail.com</p>
-                    <p><strong>Shoe Size:</strong> Not Set</p>
-                    <button class="profile-btn">Edit</button>
+                    <p><strong>Name:</strong> <span id="name">Test</span> <input type="text" id="name-input" class="edit-input" style="display: none;"></p>
+                    <p><strong>Username:</strong> <span id="username">sneakerhead7412626991775</span> <input type="text" id="username-input" class="edit-input" style="display: none;"></p>
+                    <p><strong>Email Address:</strong> <span id="email">test@gmail.com</span> <input type="email" id="email-input" class="edit-input" style="display: none;"></p>
+                    <p><strong>Shoe Size:</strong> <span id="shoe-size">Not Set</span> <input type="text" id="shoe-size-input" class="edit-input" style="display: none;"></p>
+                    <button class="profile-btn" id="edit-btn">Edit</button>
                 </div>
             </div>
         
@@ -141,17 +140,20 @@
                 </div>
             </div>
 
-            <div class="tab-content" id="selling">
-                <h1>My Selling Items</h1>
-                <div id="selling-form">
-                    <h3>Add New Item for Sale</h3>
-                    <input type="text" id="item-name" placeholder="Item Name">
-                    <input type="number" id="item-price" placeholder="Price (USD)">
-                    <input type="text" id="item-description" placeholder="Description">
-                    <button onclick="addSellingItem()">Add Item</button>
+            <div class="tab-content" id="address">
+                <h1>Manage Addresses</h1>
+                <div id="address-form">
+                    <h3>Add New Address</h3>
+                    <input type="text" id="address-line" placeholder="Street Address">
+                    <input type="text" id="city" placeholder="City">
+                    <input type="text" id="state" placeholder="State">
+                    <input type="text" id="zip-code" placeholder="Zip Code">
+                    <input type="text" id="country" placeholder="Country">
+                    <button id="add-address-btn">Done</button>
                 </div>
-                <div id="selling-items">
-                    <p>No items listed for sale.</p>
+                <div id="saved-addresses">
+                    <h3>Saved Addresses</h3>
+                    <p>No saved addresses.</p>
                 </div>
             </div>
 

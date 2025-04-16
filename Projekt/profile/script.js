@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabContents = document.querySelectorAll('.tab-content');
 
     let isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-    const sellingItems = [];
     const savedPayments = [];
 
     // Оновлення інтерфейсу аутентифікації
@@ -43,6 +42,33 @@ document.addEventListener("DOMContentLoaded", () => {
         updateAuthUI();
     });
 
+    // Кнопка редактирования профиля
+    document.getElementById("edit-btn").addEventListener("click", function() {
+        let isEditing = this.textContent === "Save";
+
+        document.querySelectorAll(".edit-input").forEach(input => {
+            input.style.display = isEditing ? "none" : "inline";
+        });
+
+        document.querySelectorAll(".profile-section span").forEach(span => {
+            span.style.display = isEditing ? "inline" : "none";
+        });
+
+        if (isEditing) {
+            document.getElementById("name").textContent = document.getElementById("name-input").value;
+            document.getElementById("username").textContent = document.getElementById("username-input").value;
+            document.getElementById("email").textContent = document.getElementById("email-input").value;
+            document.getElementById("shoe-size").textContent = document.getElementById("shoe-size-input").value;
+            this.textContent = "Edit";
+        } else {
+            document.getElementById("name-input").value = document.getElementById("name").textContent;
+            document.getElementById("username-input").value = document.getElementById("username").textContent;
+            document.getElementById("email-input").value = document.getElementById("email").textContent;
+            document.getElementById("shoe-size-input").value = document.getElementById("shoe-size").textContent;
+            this.textContent = "Save";
+        }
+    });
+
     updateAuthUI();
 
     tabContents.forEach(content => {
@@ -62,74 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    window.addSellingItem = () => {
-        const name = document.getElementById('item-name').value;
-        const price = document.getElementById('item-price').value;
-        const description = document.getElementById('item-description').value;
-
-        if (name && price && description) {
-            const newItem = { name, price, description };
-            sellingItems.push(newItem);
-            updateSellingItems();
-            clearSellingForm();
-            showSuccessMessage("Item added");
-        } else {
-            alert('Please fill in all fields.');
-        }
-    };
-
-    function showSuccessMessage(message) {
-        let existingMsg = document.querySelector('.success-message');
-        if (existingMsg) existingMsg.remove();
-
-        const msgDiv = document.createElement('div');
-        msgDiv.classList.add('success-message');
-        msgDiv.textContent = message;
-        document.body.appendChild(msgDiv);
-
-        setTimeout(() => {
-            msgDiv.remove();
-        }, 3000);
-    }
-
-    function updateSellingItems() {
-        const sellingItemsDiv = document.getElementById('selling-items');
-        sellingItemsDiv.innerHTML = '';
-
-        if (sellingItems.length === 0) {
-            sellingItemsDiv.innerHTML = '<p>No items listed for sale.</p>';
-        } else {
-            sellingItems.forEach((item, index) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('selling-item');
-                itemDiv.innerHTML = `
-                    <h4>${item.name}</h4>
-                    <p>Price: $${item.price}</p>
-                    <p>Description: ${item.description}</p>
-                    <button onclick="removeSellingItem(${index})">Remove</button>
-                `;
-                sellingItemsDiv.appendChild(itemDiv);
-            });
-        }
-    }
-
-    window.removeSellingItem = (index) => {
-        sellingItems.splice(index, 1);
-        updateSellingItems();
-    };
-
-    
-    function clearSellingForm() {
-        document.getElementById('item-name').value = '';
-        document.getElementById('item-price').value = '';
-        document.getElementById('item-description').value = '';
-    }
-
     // Открытие формы добавления карты
     window.showCardForm = () => {
         document.getElementById("card-form").classList.remove("hidden");
         document.getElementById("add-paypal").style.display = "none";
     };
+
     // Сохранение данных кредитной карты
     window.saveCard = () => {
         const cardNumber = document.getElementById("card-number").value;
@@ -164,6 +128,63 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ============ Работа с адресами ============
+    document.getElementById("add-address-btn").addEventListener("click", addAddress);
+
+    function addAddress() {
+        const addressLine = document.getElementById("address-line").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
+        const zipCode = document.getElementById("zip-code").value;
+        const country = document.getElementById("country").value;
+
+        if (!addressLine || !city || !state || !zipCode || !country) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        const savedAddresses = document.getElementById("saved-addresses");
+        const addressDiv = document.createElement("div");
+        addressDiv.classList.add("saved-address");
+        addressDiv.innerHTML = `
+            <p><strong>${addressLine}</strong></p>
+            <p>${city}, ${state}, ${zipCode}</p>
+            <p>${country}</p>
+            <button class="remove-address-btn">Remove</button>
+        `;
+
+        savedAddresses.appendChild(addressDiv);
+        clearAddressForm();
+        showSuccessMessage("Address added!");
+        attachRemoveEvent();
+    }
+
+    function attachRemoveEvent() {
+        document.querySelectorAll(".remove-address-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                this.parentElement.remove();
+            });
+        });
+    }
+
+    function clearAddressForm() {
+        document.getElementById("address-line").value = '';
+        document.getElementById("city").value = '';
+        document.getElementById("state").value = '';
+        document.getElementById("zip-code").value = '';
+        document.getElementById("country").value = '';
+    }
+
+    function showSuccessMessage(message) {
+        let msgDiv = document.createElement('div');
+        msgDiv.classList.add('success-message');
+        msgDiv.textContent = message;
+        document.body.appendChild(msgDiv);
+
+        setTimeout(() => {
+            msgDiv.remove();
+        }, 3000);
+    }
 });
 
 // Открытие официального сайта PayPal в новой вкладке
@@ -175,4 +196,30 @@ window.addPayPal = () => {
 document.getElementById("add-card").addEventListener("click", showCardForm);
 document.getElementById("add-paypal").addEventListener("click", addPayPal);
 
-
+document.addEventListener("DOMContentLoaded", () => {
+    const orders = []; // Тут поки що пусто
+  
+    const ordersList = document.getElementById("orders-list");
+    const noOrders = document.getElementById("no-orders");
+  
+    if (orders.length === 0) {
+      // Показываем "No orders yet"
+      noOrders.style.display = "block";
+      ordersList.style.display = "none";
+    } else {
+      // Показываем заказы
+      noOrders.style.display = "none";
+      ordersList.style.display = "flex";
+  
+      orders.forEach(order => {
+        const card = document.createElement("div");
+        card.className = "order-card";
+        card.innerHTML = `
+          <p><strong>Order #${order.id}</strong></p>
+          <p>${order.status}</p>
+        `;
+        ordersList.appendChild(card);
+      });
+    }
+  });
+  
