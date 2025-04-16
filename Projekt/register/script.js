@@ -8,5 +8,5 @@ function switchTab(tab) {
 
 function redirectToHome(event) {
     event.preventDefault();
-    window.location.href = "../tytul/index.html";
+    window.location.href = "../tytul/index_logged.html";
 }

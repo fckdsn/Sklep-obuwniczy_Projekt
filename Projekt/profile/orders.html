@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orders - BIDBoots</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+    <header>
+      <div class="top-bar">
+        <div class="logo">BIDBoots</div>
+        <input type="text" class="search-bar" placeholder="Search for brand, color, etc.">
+        <div class="auth-container">
+            <div class="profile-icon">
+                <img src="../images/profile-icon.png" alt="Profile Avatar">
+                <div class="profile-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="../profile/orders.html">Orders</a>
+                    <a href="../register/login.html">Log Out</a>
+                </div>
+            </div>
+        </div>            
+    </div>
+      
+        <!-- Отдельная строка с навигацией -->
+        <nav class="nav-left">
+          <a href="shop.html" class="nav-link">Shop</a>
+          <a href="orders.html" class="nav-link nav-link--active">Orders</a>
+        </nav>
+      </header>
+
+      <main class="orders-container">
+        <h2>Orders</h2>
+      
+        <!-- Якщо немає замовлень -->
+        <div id="no-orders" class="no-orders">No orders yet</div>
+      
+        <!-- Контейнер для замовлень -->
+        <div id="orders-list" class="orders-list"></div>
+      </main>
+</body>
+</html>

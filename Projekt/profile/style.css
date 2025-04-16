@@ -54,7 +54,7 @@ body {
     text-decoration: none;
     padding: 8px 15px;
     font-weight: 600;
-}
+}   
 
 .navbar a:hover {
     background-color: var(--accent-color);
@@ -569,6 +569,425 @@ footer {
     transform: scale(1.1);
     opacity: 0.8;
 }
+
+.edit-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.edit-input:focus {
+    border-color: #007bff;
+}
+
+#address {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание влево */
+    max-width: 400px; /* Уменьшена ширина */
+    margin-left: 20px; /* Отступ слева */
+}
+
+/* Стили для формы добавления адреса */
+#address-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Фиксированная ширина */
+    max-width: 400px; /* Совпадает с контейнером */
+}
+
+
+#address-form input {
+    width: calc(100% - 20px); /* Чтобы не выходило за края */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#address-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#add-address-btn {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#add-address-btn:hover {
+    background-color: #333;
+}
+
+/* Стили для списка сохраненных адресов */
+#saved-addresses {
+    max-width: 400px; /* Совпадает с формой */
+    width: 100%;
+    margin-top: 15px;
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left; /* Выровнять текст влево */
+}
+
+.saved-address {
+    background-color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.saved-address p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Кнопка удаления адреса */
+.saved-address button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.saved-address button:hover {
+    background-color: darkred;
+}
+
+/* Всплывающее сообщение */
+.success-message {
+    position: fixed;
+    bottom: 20px; /* Отступ от низа */
+    right: 20px; /* Отступ от правого края */
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    animation: fadeOut 3s forwards;
+}
+/* Анимация исчезновения */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.auth-container {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.profile-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    width: 140px;
+    z-index: 999;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+.profile-icon:hover .profile-dropdown {
+    display: block;
+}
+
+.orders-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .orders-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .orders-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .order-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+    padding: 20px;
+    width: 320px;
+    transition: transform 0.3s ease;
+  }
+  
+  .order-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .order-status {
+    background-color: #f4f4f4;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  
+  .order-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .order-details {
+    font-size: 14px;
+    color: #444;
+    margin: 10px 0;
+  }
+  
+  .order-price {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .order-card button {
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .order-card button:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  :root {
+    --bg: #ffffff;
+    --text: #000000;
+    --gray: #f2f2f2;
+  }
+  
+  /* Header */
+  .header {
+    background-color: var(--gray);
+    padding: 10px 20px;
+  }
+  
+  .header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header__logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text);
+  }
+  
+  .header__search {
+    flex-grow: 1;
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px 16px;
+    border: 1px solid var(--text);
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: var(--bg);
+    color: var(--text);
+  }
+  
+  .header__profile {
+    min-width: 40px;
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--text);
+  }
+  
+  /* Navigation */
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 10px 20px;
+    background-color: var(--gray);
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: 600;
+    color: var(--text);
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-link--active {
+    background-color: black;
+    color: white;
+  }
+  
+  /* Hover всегда перекрывает active */
+  .nav-link:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  /* Orders */
+  .orders-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .orders-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .orders-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+/* Верхний баннер как был */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-bg-color);
+    padding: 10px 20px;
+  }
+  
+  .search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* Новая навигация слева */
+  .nav-left {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 10px 20px;
+    background-color: var(--secondary-bg-color);
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-link--active {
+    background-color: black;
+    color: white;
+  }
+  
+  .nav-link:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .no-orders {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 50px;
+  }
+  
+  .order-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  
+
 
 
 

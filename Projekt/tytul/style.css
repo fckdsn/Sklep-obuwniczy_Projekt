@@ -172,3 +172,121 @@ footer {
     padding: 10px;
     color: #777;
 }
+
+/* Аватар */
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Меню */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    z-index: 999;
+    padding: 10px 0;
+    flex-direction: column;
+}
+
+/* Посилання в меню */
+.profile-dropdown a {
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+/* І ось головне правило! */
+.profile-container:hover .profile-dropdown {
+    display: flex;
+}
+
+.product-grid-section {
+    padding: 40px;
+    background-color: #fff;
+}
+
+.product-grid-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 🟩 максимум 4 товари в ряд */
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px 12px;
+}
+
+.product-info h3 {
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.product-info .price {
+    font-size: 13px;
+    color: #1a1a1a;
+}
+
+.product-info .price span {
+    font-size: 12px;
+    color: #777;
+}
+
+.image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* квадрат */
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
