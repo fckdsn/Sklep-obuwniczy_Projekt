@@ -45,6 +45,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+  document.querySelectorAll('.slider').forEach(slider => {
+    const slides = slider.querySelectorAll('.slide');
+    const dots = slider.querySelectorAll('.dot');
+    let currentIndex = 0;
+
+    const showSlide = (index) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i]?.classList.toggle('active', i === index);
+      });
+    };
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        showSlide(currentIndex);
+      });
+    });
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }, 3000); // смена каждые 3 секунды
+
+    showSlide(currentIndex);
+  });
+
+
+
 function redirectToLogin() {
     window.location.href = "../register/login.html"; 
 }
@@ -53,4 +83,26 @@ function redirectToSignup() {
     window.location.href = "../register/signup.html";
 }
 
+function renderProductData() {
+  const container = document.getElementById("product-grid-container");
+  products.forEach(product => {
+    const card = document.createElement("a");
+    card.href = `../items/product1.html?id=${product.id}`; // исправлено, чтобы был шаблонный литерал
+    card.className = "product-card-link";
+    card.innerHTML = `
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="${product.images[0]}" alt="${product.title}">
+        </div>
+        <div class="product-info">
+          <h3>${product.title}</h3>
+          <p class="price">${product.pricePln} PLN</p>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", renderProductData);
 
