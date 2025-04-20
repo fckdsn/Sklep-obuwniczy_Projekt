@@ -30,15 +30,6 @@ body {
     color: var(--accent-color);
 }
 
-.search-bar {
-    flex-grow: 1;
-    margin: 0 20px;
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
 
 /* Навігаційна панель */
 .navbar {
@@ -706,10 +697,10 @@ footer {
 }
 
 .auth-container {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    display: flex;
+    align-items: center;
 }
+
 
 .profile-icon {
     position: relative;
@@ -985,6 +976,92 @@ footer {
     padding: 20px;
     border-radius: 10px;
   }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none; /* убираем подчёркивание */
+    transition: transform 0.3s ease; /* плавное приближение */
+    display: inline-block;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* анимация приближения */
+}
+
+/* Центрирование и стилизация логотипа */
+.top-bar {
+    display: flex;
+    justify-content: center; /* Центрує логотип */
+    align-items: center;
+    background-color: var(--secondary-bg-color);
+    padding: 20px 0;
+    position: relative; /* для правильного позиционирования auth-container */
+}
+
+/* Логотип как ссылка */
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Профиль — справа от логотипа */
+.auth-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+/* Сделать body и html на весь экран */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Обёртка для всего содержимого */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* высота всей видимой части */
+  }
+  
+  /* Контент (main) растягивается, чтобы занять всё пространство */
+  .orders-container {
+    flex: 1;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .orders-container {
+    flex: 1;
+  }
+  
+  
+
+
   
   
 

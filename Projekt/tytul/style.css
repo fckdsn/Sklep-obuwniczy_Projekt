@@ -290,3 +290,39 @@ footer {
     display: block;
     border-bottom: 1px solid #eee;
 }
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none; /* убираем подчёркивание */
+    transition: transform 0.3s ease; /* плавное приближение */
+    display: inline-block;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* анимация приближения */
+}
+
+.cart-icon img {
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cart-icon img:hover {
+    transform: scale(1.1);
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+
+
+
+

@@ -1,0 +1,123 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Product Details | BIDBoots</title>
+    <link rel="stylesheet" href="../profile/style.css"> <!-- общий стиль -->
+    <link rel="stylesheet" href="product.css">
+    
+    <!-- специфический стиль для продукта -->
+  </head>
+
+
+      <div class="top-bar">
+          <!-- Логотип как ссылка -->
+          <a href="../tytul/index_logged.html" class="logo">BIDBoots</a>
+      
+          <!-- Профиль -->
+          <div class="auth-container">
+            <div class="profile-icon">
+              <img src="../images/profile-icon.png" alt="Profile Avatar">
+              <div class="profile-dropdown">
+                <a href="../profile/profile.html">My Profile</a>
+                <a href="../profile/orders.html">Orders</a>
+                <a href="../register/login.html">Log Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="product-container">
+          <div class="product-images">
+            <img id="main-image" src="" alt="Main product image">
+            <div class="thumbnail-row" id="thumbnails"></div>
+          </div>
+        
+          <div class="product-details">
+            <h1 id="product-title">Loading...</h1>
+            <p class="price-main"><span id="price-pln"></span> PLN</p>
+            <p><strong>Brand:</strong> <span id="brand"></span></p>
+            <p><strong>Size:</strong> <span id="size"></span></p>
+        
+            <div class="product-options">
+              <div class="option-block">
+                <label for="color"><strong>COLOR</strong></label>
+                <div class="color-option" id="color">BLACK</div>
+              </div>
+        
+              <div class="option-block">
+                <label><strong>US SIZE</strong></label>
+                <div class="size-options">
+                  <span class="size selected">7</span>
+                  <span class="size">8</span>
+                  <span class="size">9</span>
+                  <span class="size">10</span>
+                  <span class="size">11</span>
+                  <span class="size">12</span>
+                  <span class="size">13</span>
+                </div>
+              </div>
+        
+              <div class="option-block quantity-block">
+                <label><strong>Quantity</strong></label>
+                <div class="quantity-selector">
+                  <button class="qty-btn">-</button>
+                  <span class="qty-number">1</span>
+                  <button class="qty-btn">+</button>
+                </div>
+              </div>
+            </div>
+        
+            <div class="product-buttons">
+              <button class="order-btn">Go to Order Page</button>
+              <button class="cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <section class="related-section">
+          <h2>You may also like</h2>
+          <div class="related-products" id="related-container"></div>
+        </section>
+        
+        
+        
+          
+    <footer>
+      <div class="footer-sections">
+          <div>
+              <h3>About</h3>
+              <a href="#">How It Works</a><a href="#">Verification</a>
+              <a href="#">Company</a><a href="#">Careers</a>
+          </div>
+          <div>
+              <h3>Help</h3>
+              <a href="#">Help Center</a><a href="#">Contact Us</a><a href="#">Size Guide</a>
+          </div>
+          <div>
+              <h3>Popular Brands</h3>
+              <a href="#">Nike</a><a href="#">Adidas</a><a href="#">New Balance</a><a href="#">Jordan</a>
+          </div>
+          <div>
+              <h3>Accessories</h3>
+              <a href="#">Sunglasses</a><a href="#">Watches</a><a href="#">Bags</a>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 BIDBoots. All rights reserved.</p>
+      </div>
+  </footer>
+
+
+  <!-- Подключаем нужные JS-файлы -->
+  <script defer src="data.js"></script>
+  <script defer src="script.js"></script>
+
+
+    
+
+    <div id="toast" class="toast">Added to cart!</div>
+
+    
+  </body>
+  </html>
