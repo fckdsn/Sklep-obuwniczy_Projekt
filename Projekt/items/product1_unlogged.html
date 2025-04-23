@@ -3,40 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <title>Product Details | BIDBoots</title>
-    <link rel="stylesheet" href="../profile/style.css"> 
-    
+    <link rel="stylesheet" href="../tytul/style.css"> <!-- общий стиль -->
+    <link rel="stylesheet" href="../profile/style.css"> <!-- общий стиль -->
     <link rel="stylesheet" href="product.css">
+    
     
     <!-- специфический стиль для продукта -->
   </head>
   <body>
-    <div class="top-bar">
+
+
+      <div class="top-bar">
           <!-- Логотип как ссылка -->
-          <a href="../tytul/index_logged.html" class="logo">BIDBoots</a>
+          <a href="../tytul/index.html" class="logo">BIDBoots</a>
       
-          <!-- Профиль -->
-          <div class="auth-container">
+          <!-- Кнопки авторизації -->
+          <div class="auth-buttons">
             <div class="cart-container">
               <div class="cart-icon">
-                  <img src="../images/cart-icon.png" alt="Cart Icon" id="cart-icon">
+                <img src="../images/cart-icon.png" alt="Cart Icon" id="cart-icon">
               </div>
               <div class="cart-dropdown" id="cart-dropdown">
-                  <div class="cart-items" id="cart-items">
-                      <!-- Тут JS вставляє товари -->
-                  </div>
-                  <button class="checkout-btn">Checkout</button>
-              </div>
-           </div>
-            <div class="profile-icon">
-              <img src="../images/profile-icon.png" alt="Profile Avatar">
-              <div class="profile-dropdown">
-                <a href="../profile/profile.html">My Profile</a>
-                <a href="../profile/orders.html">Orders</a>
-                <a href="../register/login.html">Log Out</a>
+                <div class="cart-items" id="cart-items">
+                  <!-- JS вставить товари сюди -->
+                </div>
+                <button class="checkout-btn">Checkout</button>
               </div>
             </div>
+          
+            <button class="login" onclick="location.href='../register/login.html'">Login</button>
+            <button class="signup" onclick="location.href='../register/signup.html'">Sign Up</button>
           </div>
-        </div>
+          
+      </div>
+
 
       <div class="product-container">
           <div class="product-images">
@@ -123,17 +123,11 @@
   <!-- Подключаем нужные JS-файлы -->
   <script defer src="data.js"></script>
   <script defer src="script.js"></script>
-  <script defer src="../shared/cartDropdown.js"></script>
-  <script defer src="../shared/cart.js"></script>
-  
-
-  
+  <script src="../shared/cart.js"></script>
 
 
     
 
     <div id="toast" class="toast">Added to cart!</div>
-
-    
   </body>
   </html>

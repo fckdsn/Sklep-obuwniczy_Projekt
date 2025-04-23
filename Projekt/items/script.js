@@ -18,6 +18,8 @@ function loadProduct() {
   document.getElementById("brand").textContent = productData.brand;
   document.getElementById("size").textContent = productData.size;
 
+  document.getElementById("color").textContent = productData.color;
+
   // Основное изображение
   const mainImage = document.getElementById("main-image");
   mainImage.src = productData.images[0];
@@ -74,35 +76,9 @@ document.addEventListener("DOMContentLoaded", loadProduct);
     });
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const cartBtn = document.querySelector(".cart-btn");
   
-    cartBtn.addEventListener("click", () => {
-      const selectedSize = document.querySelector(".size.selected")?.textContent.trim();
-      const quantity = document.querySelector(".qty-number").textContent;
-      const title = document.getElementById("product-title").textContent;
-      const price = document.getElementById("price-pln").textContent;
   
-      if (!selectedSize) {
-        alert("Please select a size before adding to cart.");
-        return;
-      }
-  
-      const item = {
-        title,
-        size: selectedSize,
-        quantity,
-        price,
-      };
-  
-      // Пример: сохраняем в localStorage
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(item);
-      localStorage.setItem("cart", JSON.stringify(cart));
-  
-      showToast("Added to cart!");
-    });
-  });
+      
 
   document.addEventListener("DOMContentLoaded", function () {
     const orderBtn = document.querySelector(".order-btn");
@@ -124,20 +100,26 @@ document.addEventListener("DOMContentLoaded", loadProduct);
 
   function renderRelatedProducts() {
     const container = document.getElementById("related-container");
+    if (!container) return;
   
-    // Отримуємо id з URL, щоб виключити поточний товар
+    // 1. Отримуємо ID з URL
     const params = new URLSearchParams(window.location.search);
     const currentId = parseInt(params.get("id"));
   
-    // Фільтруємо товари: беремо не той, що зараз відкритий
+    // 2. Визначаємо, на якій сторінці ми знаходимося (логін / без логіна)
+    const currentPage = window.location.pathname.split("/").pop(); // наприклад: "product1_unlogged.html"
+    const isUnlogged = currentPage === "product1_unlogged.html";
+    const targetPage = isUnlogged ? "product1_unlogged.html" : "product1.html";
+  
+    // 3. Фільтруємо товари (крім поточного)
     const related = products
       .filter(p => p.id !== currentId)
-      .slice(0, 3); // беремо максимум 3
+      .slice(0, 3);
   
-    // Створюємо картки
+    // 4. Створюємо картки
     related.forEach(product => {
       const a = document.createElement("a");
-      a.href = `product1.html?id=${product.id}`; // або правильний шлях
+      a.href = `${targetPage}?id=${product.id}`; // 👉 динамічно
       a.className = "product-card-link";
       a.innerHTML = `
         <div class="product-card">
@@ -154,12 +136,26 @@ document.addEventListener("DOMContentLoaded", loadProduct);
     });
   }
   
-  // Викликаємо після завантаження
   document.addEventListener("DOMContentLoaded", renderRelatedProducts);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cartIcon = document.getElementById("cart-icon");
+    const cartDropdown = document.getElementById("cart-dropdown");
   
+    cartIcon.addEventListener("click", (e) => {
+        e.stopPropagation(); // щоб клік поза меню не одразу закривав
+        cartDropdown.classList.toggle("active");
+        renderCartItems();
+    });
   
-  
-  
-  
-  
+    // Закриття випадаючого вікна при кліку поза ним
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".cart-container")) {
+            cartDropdown.classList.remove("active");
+        }
+    });
+  });
+
+  // ✅ Add this script in script.js or directly in <script> tag after data.js is loaded
+
   
