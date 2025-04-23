@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIDBoots</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <script src="../items/data.js"></script>
+    
 
 </head>
 <body>
@@ -16,7 +15,20 @@
         <div class="top-bar">
             <a href="../tytul/index_logged.html" class="logo">BIDBoots</a>
             <input type="text" class="search-bar" placeholder="Search for brand, color, etc.">
-            <div class="auth-container">              
+            <div class="auth-container"> 
+                <div class="cart-container">
+                    <div class="cart-icon">
+                        <img src="../images/cart-icon.png" alt="Cart Icon" id="cart-icon">
+                    </div>
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-items" id="cart-items">
+                            <!-- Тут JS вставляє товари -->
+                        </div>
+                        <button class="checkout-btn">Checkout</button>
+                    </div>
+                 </div>
+            
+                             
                 <div class="profile-container">
                     <div class="profile-icon">
                         <img src="../images/profile-icon.png" alt="Profile Avatar">
@@ -185,8 +197,10 @@
         <p>&copy; 2025 BIDBoots. All rights reserved.</p>
     </div>
 </footer>
-</body>
 
+<script defer src="../items/data.js"></script>
+<script defer src="script.js"></script>
+<script defer src="../shared/cart.js"></script>
 
 </body>
 </html>
