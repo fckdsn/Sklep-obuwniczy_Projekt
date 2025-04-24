@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutButton = document.getElementById("checkout-button");
+
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", () => {
+      window.location.href = "../profile/orders.html"; // або твій шлях до orders
+    });
+  }
+});
+
 
 // 📸 Слайдер (автоматичний + точки)
 document.querySelectorAll('.slider').forEach(slider => {

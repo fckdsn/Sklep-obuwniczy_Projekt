@@ -5,70 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Orders - BIDBoots</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="wrapper">
-
     <header>
       <div class="top-bar">
-        <!-- Логотип как ссылка -->
         <a href="../tytul/index_logged.html" class="logo">BIDBoots</a>
-    
-        <!-- Профиль -->
         <div class="auth-container">
           <div class="profile-icon">
-            <img src="../images/profile-icon.png" alt="Profile Avatar">
+            <img src="../images/profile-icon.png" alt="Profile Avatar" />
             <div class="profile-dropdown">
               <a href="profile.html">My Profile</a>
-              <a href="../profile/orders.html">Orders</a>
+              <a href="orders.html">Orders</a>
               <a href="../register/login.html">Log Out</a>
             </div>
           </div>
         </div>
       </div>
-      
-        <!-- Отдельная строка с навигацией -->
-        <nav class="nav-left">
-          <a href="../tytul/index_logged.html" class="nav-link">Shop</a>
-          <a href="orders.html" class="nav-link nav-link--active">Orders</a>
-        </nav>
-      </header>
+      <nav class="nav-left">
+        <a href="../tytul/index_logged.html" class="nav-link">Shop</a>
+        <a href="orders.html" class="nav-link nav-link--active">Orders</a>
+      </nav>
+    </header>
 
-      <main class="orders-container">
-        <h2>Orders</h2>
-      
-        <!-- Якщо немає замовлень -->
-        <div id="no-orders" class="no-orders">No orders yet</div>
-      
-        <!-- Контейнер для замовлень -->
-        <div id="orders-list" class="orders-list"></div>
-      </main>
+    <div class="checkout-container">
+      <!-- Left Column -->
+      <section class="checkout-form">
+        <h2>Checkout</h2>
+        <h3>Contact</h3>
+        <input type="text" placeholder="Email or phone" />
+        <h3>Delivery</h3>
+        <input type="text" placeholder="Country/Region" />
+        <input type="text" placeholder="First name" />
+        <input type="text" placeholder="Last name" />
+        <input type="text" placeholder="Address" />
+        <input type="text" placeholder="City" />
+        <input type="text" placeholder="Postal code" />
+      </section>
 
-      <footer>
-        <div class="footer-sections">
-            <div>
-                <h3>About</h3>
-                <a href="#">How It Works</a><a href="#">Verification</a>
-                <a href="#">Company</a><a href="#">Careers</a>
-            </div>
-            <div>
-                <h3>Help</h3>
-                <a href="#">Help Center</a><a href="#">Contact Us</a><a href="#">Size Guide</a>
-            </div>
-            <div>
-                <h3>Popular Brands</h3>
-                <a href="#">Nike</a><a href="#">Adidas</a><a href="#">New Balance</a><a href="#">Jordan</a>
-            </div>
-            <div>
-                <h3>Accessories</h3>
-                <a href="#">Sunglasses</a><a href="#">Watches</a><a href="#">Bags</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 BIDBoots. All rights reserved.</p>
-        </div>
+      <!-- Right Column -->
+      <div class="order-summary">
+        <h3>Your Items</h3>
+        <div id="cart-items"></div>
+        <p class="order-total-line"><strong>Total:</strong> <span id="order-total">0 PLN</span></p>
+        
+        
+        
+  
+        <button id="pay-btn">Pay now </button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-sections">
+        <div><h3>About</h3><a href="#">How It Works</a><a href="#">Company</a></div>
+        <div><h3>Help</h3><a href="#">Contact Us</a></div>
+        <div><h3>Popular Brands</h3><a href="#">Nike</a><a href="#">Adidas</a></div>
+        <div><h3>Accessories</h3><a href="#">Watches</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BIDBoots. All rights reserved.</p>
+      </div>
     </footer>
   </div>
+
+  <script defer src="../items/data.js"></script>
+  <script defer src="orders-script.js"></script>
+  
+  <script defer src="../shared/cart.js"></script>
+  
 </body>
 </html>

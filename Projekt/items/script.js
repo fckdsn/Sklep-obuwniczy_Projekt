@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutButton = document.getElementById("checkout-button");
+
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", () => {
+      const userId = localStorage.getItem("currentUserId");
+
+      // Если пользователь не залогинен — можно задать дефолтного (тестового)
+      if (!userId) {
+        localStorage.setItem("currentUserId", "testUser");
+      }
+
+      // Переход на страницу заказов
+      window.location.href = "../profile/orders.html";
+    });
+  }
+});
+
 function loadProduct() {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));
