@@ -121,7 +121,7 @@
   }
   
   .info-text.green {
-    color: #4caf50;
+    color: #000000;
     font-weight: bold;
   }
   
@@ -241,15 +241,31 @@
   }
   
   .related-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: bold;
+    text-align: left;
+    margin-left: 0; /* гарантировано прижмёт влево */
+    padding-left: 10px;
   }
-  
+
   .related-products {
     display: flex;
+    justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* ❗ Забороняє перенос рядків */
+    overflow-x: auto;   /* Додає скрол, якщо не влазить */
+    padding: 10px 0;
+  }
+
+
+  .related-products .product-card {
+    width: 220px;             /* Фіксована ширина */
+    flex-shrink: 0;           /* Не стискається */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
   }
   
   .product-card-link {
@@ -267,9 +283,8 @@
     background-color: #fff;
   }
   
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .related-products .product-card:hover {
+    transform: translateY(-4px);
   }
   
   .image-wrapper img {
@@ -440,6 +455,44 @@
 .checkout-btn:hover {
     background-color: #222;
 }
+
+.qty-controls .qty-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
+  border: none; /* 🚫 Прибирає рамку */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.qty-controls .qty-btn:hover {
+  background-color: #f0f0f0; /* або залишити прозорим */
+}
+
+.qty-controls .remove-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-controls .remove-btn:hover {
+  transform: scale(1.1);
+}
+
+.remove-icon {
+  width: 18px;
+  height: 18px;
+}
+
 
 
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Orders - BIDBoots</title>
+  <link rel="icon" href="../images/favicon.png" type="image/png">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -46,33 +47,45 @@
       <!-- Right Column -->
       <div class="order-summary">
         <h3>Your Items</h3>
-        <div id="cart-items"></div>
+        <div class="cart-scrollable" id="cart-items">
+          <!-- JS вставит сюда товар -->
+        </div>        
         <p class="order-total-line"><strong>Total:</strong> <span id="order-total">0 PLN</span></p>
-        
-        
-        
-  
         <button id="pay-btn">Pay now </button>
-      </div>
+    </div>
     </div>
 
     <footer>
       <div class="footer-sections">
-        <div><h3>About</h3><a href="#">How It Works</a><a href="#">Company</a></div>
-        <div><h3>Help</h3><a href="#">Contact Us</a></div>
-        <div><h3>Popular Brands</h3><a href="#">Nike</a><a href="#">Adidas</a></div>
-        <div><h3>Accessories</h3><a href="#">Watches</a></div>
+          <div>
+              <h3>About</h3>
+              <a href="#">How It Works</a><a href="#">Verification</a>
+              <a href="#">Company</a><a href="#">Careers</a>
+          </div>
+          <div>
+              <h3>Help</h3>
+              <a href="#">Help Center</a><a href="#">Contact Us</a><a href="#">Size Guide</a>
+          </div>
+          <div>
+              <h3>Popular Brands</h3>
+              <a href="#">Nike</a><a href="#">Adidas</a><a href="#">New Balance</a><a href="#">Jordan</a>
+          </div>
+          <div>
+              <h3>Accessories</h3>
+              <a href="#">Sunglasses</a><a href="#">Watches</a><a href="#">Bags</a>
+          </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 BIDBoots. All rights reserved.</p>
+          <p>&copy; 2025 BIDBoots. All rights reserved.</p>
       </div>
-    </footer>
+  </footer>
   </div>
 
-  <script defer src="../items/data.js"></script>
-  <script defer src="orders-script.js"></script>
+  <script defer src="../items/data.js"></script>     <!-- 1: Містить products -->
+  <script defer src="orders-script.js"></script>     <!-- 2: Скрипт рендеру -->
+ 
+
   
-  <script defer src="../shared/cart.js"></script>
   
 </body>
 </html>

@@ -38,7 +38,7 @@ function renderCartItems() {
     return;
   }
 
-  cart.forEach(item => {
+  cart.forEach((item, index) => {
     const el = document.createElement("div");
     el.className = "cart-item";
     el.innerHTML = `
@@ -47,12 +47,61 @@ function renderCartItems() {
         <h4>${item.title}</h4>
         <span>${item.price} PLN</span><br>
         <span>Size: ${item.size}</span><br>
-        <span>Quantity: ${item.quantity}</span>
+        <div class="qty-controls">
+          <button class="qty-btn minus" data-index="${index}">−</button>
+          <span class="qty-number">${item.quantity}</span>
+          <button class="qty-btn plus" data-index="${index}">+</button>
+          <button class="remove-btn" data-index="${index}">
+              <img src="../images/delete-icon.png" alt="Remove" style="width:18px; height:18px;" />
+          </button>
+        </div>
       </div>
     `;
     container.appendChild(el);
   });
+
+  // Добавляем обработчики событий после вставки
+  addCartDropdownListeners();
 }
+
+function addCartDropdownListeners() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  document.querySelectorAll(".qty-btn.plus").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // ← вот это важно!
+      const index = btn.dataset.index;
+      cart[index].quantity++;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartItems();
+    });
+  });
+
+  document.querySelectorAll(".qty-btn.minus").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // ← и тут
+      const index = btn.dataset.index;
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCartItems();
+      }
+    });
+  });
+
+  document.querySelectorAll(".remove-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // ← и обязательно тут
+      const index = btn.dataset.index;
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartItems();
+    });
+  });
+}
+
+
+
 
 function setupAddToCartButton() {
   const cartBtn = document.querySelector(".cart-btn");
