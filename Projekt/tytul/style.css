@@ -406,6 +406,42 @@ footer {
     background-color: #222;
 }
 
+.qty-controls .qty-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+    border: none; /* 🚫 Прибирає рамку */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .qty-controls .qty-btn:hover {
+    background-color: #f0f0f0; /* або залишити прозорим */
+  }
+  
+  .qty-controls .remove-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .qty-controls .remove-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .remove-icon {
+    width: 18px;
+    height: 18px;
+  }
 
   
 

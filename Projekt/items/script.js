@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", loadProduct);
     // 3. Фільтруємо товари (крім поточного)
     const related = products
       .filter(p => p.id !== currentId)
-      .slice(0, 3);
+      .slice(0, 5);
   
     // 4. Створюємо картки
     related.forEach(product => {
@@ -176,4 +176,26 @@ document.addEventListener("DOMContentLoaded", loadProduct);
 
   // ✅ Add this script in script.js or directly in <script> tag after data.js is loaded
 
+
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const orderBtn = document.querySelector(".order-btn");
+  
+    orderBtn.addEventListener("click", () => {
+      const selectedSize = document.querySelector(".size.selected")?.textContent || "Unknown";
+      const quantity = parseInt(document.querySelector(".qty-number").textContent);
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id"));
+  
+      localStorage.setItem("singleOrderItem", JSON.stringify({
+        id: id,
+        quantity: quantity,
+        size: selectedSize
+      }));
+  
+      window.location.href = "../profile/orders.html?single=true";
+    });
+  });
+  
+  
   

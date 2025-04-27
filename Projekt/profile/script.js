@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+
+  
+  document.addEventListener("DOMContentLoaded", () => {
     const loginBtn = document.querySelector('.login');
     const signupBtn = document.querySelector('.signup');
     const logoutBtn = document.querySelector('#logout');
@@ -8,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabContents = document.querySelectorAll('.tab-content');
 
     let isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-    const savedPayments = [];
+    let savedPayments = [];
 
-    // Оновлення інтерфейсу аутентифікації
     function updateAuthUI() {
         if (isLoggedIn) {
             authButtons?.classList.add('hidden');
@@ -21,28 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Вхід
     loginBtn?.addEventListener('click', () => {
         localStorage.setItem('loggedIn', 'true');
         isLoggedIn = true;
         updateAuthUI();
     });
 
-    // Реєстрація
     signupBtn?.addEventListener('click', () => {
         localStorage.setItem('loggedIn', 'true');
         isLoggedIn = true;
         updateAuthUI();
     });
 
-    // Вихід
     logoutBtn?.addEventListener('click', () => {
         localStorage.removeItem('loggedIn');
         isLoggedIn = false;
         updateAuthUI();
     });
 
-    // Кнопка редактирования профиля
     document.getElementById("edit-btn").addEventListener("click", function() {
         let isEditing = this.textContent === "Save";
 
@@ -88,13 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Открытие формы добавления карты
     window.showCardForm = () => {
         document.getElementById("card-form").classList.remove("hidden");
         document.getElementById("add-paypal").style.display = "none";
     };
 
-    // Сохранение данных кредитной карты
     window.saveCard = () => {
         const cardNumber = document.getElementById("card-number").value;
         const cardName = document.getElementById("card-name").value;
@@ -106,29 +101,44 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Маскируем номер карты и сохраняем
-        const maskedCard = `**** **** **** ${cardNumber.slice(-4)}`;
-        savedPayments.push(`${maskedCard} - ${cardName}`);
+        const maskedCard = `**** **** **** ${cardNumber.slice(-4)} - ${cardName}`;
+        savedPayments.push(maskedCard);
         updateSavedPayments();
         showSuccessMessage("Credit card saved!");
 
-        // Скрываем форму и возвращаем кнопку PayPal
         document.getElementById("card-form").classList.add("hidden");
         document.getElementById("add-paypal").style.display = "flex";
+
+        // Очищення форми
+        document.getElementById("card-number").value = '';
+        document.getElementById("card-name").value = '';
+        document.getElementById("card-expiry").value = '';
+        document.getElementById("card-cvv").value = '';
     };
 
-    // Обновление списка сохраненных платежных методов
     function updateSavedPayments() {
         const savedPaymentsList = document.getElementById("saved-payments");
         savedPaymentsList.innerHTML = '';
-        savedPayments.forEach(payment => {
+
+        savedPayments.forEach((payment, index) => {
             const listItem = document.createElement("li");
-            listItem.textContent = payment;
+            listItem.classList.add("saved-payment-item");
+            listItem.innerHTML = `
+                <span>${payment}</span>
+                <button class="remove-payment-btn" data-index="${index}">Remove</button>
+            `;
             savedPaymentsList.appendChild(listItem);
+        });
+
+        document.querySelectorAll(".remove-payment-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const idx = this.getAttribute("data-index");
+                savedPayments.splice(idx, 1);
+                updateSavedPayments();
+            });
         });
     }
 
-    // ============ Работа с адресами ============
     document.getElementById("add-address-btn").addEventListener("click", addAddress);
 
     function addAddress() {
@@ -156,10 +166,10 @@ document.addEventListener("DOMContentLoaded", () => {
         savedAddresses.appendChild(addressDiv);
         clearAddressForm();
         showSuccessMessage("Address added!");
-        attachRemoveEvent();
+        attachRemoveAddressEvent();
     }
 
-    function attachRemoveEvent() {
+    function attachRemoveAddressEvent() {
         document.querySelectorAll(".remove-address-btn").forEach(button => {
             button.addEventListener("click", function() {
                 this.parentElement.remove();
@@ -185,41 +195,72 @@ document.addEventListener("DOMContentLoaded", () => {
             msgDiv.remove();
         }, 3000);
     }
-});
 
-// Открытие официального сайта PayPal в новой вкладке
-window.addPayPal = () => {
-    window.open("https://www.paypal.com", "_blank");
-};
+    window.addPayPal = () => {
+        window.open("https://www.paypal.com", "_blank");
+    };
 
-// Назначаем обработчики событий на изображения (карта и PayPal)
-document.getElementById("add-card").addEventListener("click", showCardForm);
-document.getElementById("add-paypal").addEventListener("click", addPayPal);
+    document.getElementById("add-card").addEventListener("click", showCardForm);
+    document.getElementById("add-paypal").addEventListener("click", addPayPal);
 
-document.addEventListener("DOMContentLoaded", () => {
-    const orders = []; // Тут поки що пусто
-  
+    // Ініціалізація пустих ордерів
+    const orders = [];
     const ordersList = document.getElementById("orders-list");
     const noOrders = document.getElementById("no-orders");
-  
-    if (orders.length === 0) {
-      // Показываем "No orders yet"
-      noOrders.style.display = "block";
-      ordersList.style.display = "none";
-    } else {
-      // Показываем заказы
-      noOrders.style.display = "none";
-      ordersList.style.display = "flex";
-  
-      orders.forEach(order => {
-        const card = document.createElement("div");
-        card.className = "order-card";
-        card.innerHTML = `
-          <p><strong>Order #${order.id}</strong></p>
-          <p>${order.status}</p>
-        `;
-        ordersList.appendChild(card);
-      });
+
+    if (ordersList && noOrders) {
+        if (orders.length === 0) {
+            noOrders.style.display = "block";
+            ordersList.style.display = "none";
+        } else {
+            noOrders.style.display = "none";
+            ordersList.style.display = "flex";
+
+            orders.forEach(order => {
+                const card = document.createElement("div");
+                card.className = "order-card";
+                card.innerHTML = `
+                  <p><strong>Order #${order.id}</strong></p>
+                  <p>${order.status}</p>
+                `;
+                ordersList.appendChild(card);
+            });
+        }
     }
-  });
-  
+});
+
+function renderRelatedProducts() {
+    const container = document.getElementById("related-container");
+    if (!container) return;
+
+    const currentPage = window.location.pathname.split("/").pop();
+    const isUnlogged = currentPage === "product1_unlogged.html";
+    const targetPage = isUnlogged ? "product1_unlogged.html" : "product1.html";
+
+    // ✅ Перемешиваем товары
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
+
+    // ✅ Берем 5 случайных
+    const related = shuffled.slice(0, 5);
+
+    related.forEach(product => {
+        const a = document.createElement("a");
+        a.href = `${targetPage}?id=${product.id}`;
+        a.className = "product-card-link";
+        a.innerHTML = `
+            <div class="product-card">
+                <div class="image-wrapper">
+                    <img src="${product.images[0]}" alt="${product.title}">
+                </div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
+                    <p class="price">${product.pricePln} PLN</p>
+                </div>
+            </div>
+        `;
+        container.appendChild(a);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", renderRelatedProducts);
+
