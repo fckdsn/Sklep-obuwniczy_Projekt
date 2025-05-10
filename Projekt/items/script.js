@@ -1,3 +1,9 @@
+let sizeQuantities = {};
+let selectedSize = null;
+const qtyNumber = document.querySelector(".qty-number");
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const checkoutButton = document.getElementById("checkout-button");
 
@@ -61,38 +67,57 @@ document.addEventListener("DOMContentLoaded", loadProduct);
 
  
   // 👉 Обработчик размеров — ВНЕ loadProduct
-  document.addEventListener("DOMContentLoaded", function () {
-    const sizeElements = document.querySelectorAll(".size");
-    const sizeText = document.getElementById("size");
-  
-    sizeElements.forEach((el) => {
-      el.addEventListener("click", () => {
-        sizeElements.forEach((s) => s.classList.remove("selected"));
-        el.classList.add("selected");
-        sizeText.textContent = "US " + el.textContent.trim();
-      });
-    });
-  });
+
 
   document.addEventListener("DOMContentLoaded", function () {
-    // ... код с выбором размера
-  
+
+  function updateQtyDisplay() {
+    if (selectedSize) {
+      qtyNumber.textContent = sizeQuantities[selectedSize] || "1";
+    }
+  }
+
+  function attachQtyButtons() {
     const qtyMinus = document.querySelector('.qty-btn:first-child');
     const qtyPlus = document.querySelector('.qty-btn:last-child');
-    const qtyNumber = document.querySelector('.qty-number');
-  
+
     qtyMinus.addEventListener('click', () => {
+      if (!selectedSize) return;
       let qty = parseInt(qtyNumber.textContent);
       if (qty > 1) {
         qtyNumber.textContent = qty - 1;
+        sizeQuantities[selectedSize] = qty - 1;
       }
     });
-  
+
     qtyPlus.addEventListener('click', () => {
+      if (!selectedSize) return;
       let qty = parseInt(qtyNumber.textContent);
       qtyNumber.textContent = qty + 1;
+      sizeQuantities[selectedSize] = qty + 1;
+    });
+  }
+
+  // Назначаем обработчики для кнопок +/- сразу
+  attachQtyButtons();
+
+  // Назначаем обработчики для размеров
+  document.querySelectorAll(".size").forEach(el => {
+    el.addEventListener("click", () => {
+      document.querySelectorAll(".size").forEach(s => s.classList.remove("selected"));
+      el.classList.add("selected");
+
+      selectedSize = el.textContent.trim();
+      updateQtyDisplay();
     });
   });
+});
+
+  
+  
+
+    
+  
 
   
   

@@ -3,6 +3,8 @@ console.log("✅ cart.js connected");
 console.log("cart.js: ", document.getElementById("cart-icon"));
 
 
+
+
 function initCartDropdown() {
   const cartIcon = document.getElementById("cart-icon");
   const cartDropdown = document.getElementById("cart-dropdown");
@@ -112,35 +114,37 @@ function setupAddToCartButton() {
     const product = products.find(p => p.id == id);
     if (!product) return;
 
-    const selectedSize = document.querySelector(".size.selected")?.textContent.trim();
-    const quantity = parseInt(document.querySelector(".qty-number").textContent);
-
-    if (!selectedSize) {
+    const selectedSizeElement = document.querySelector(".size.selected");
+    if (!selectedSizeElement) {
       alert("Please select a size before adding to cart.");
       return;
     }
 
+    const selectedSize = selectedSizeElement.textContent.trim();
+
+    // 🟢 Берём запомненное количество или 1
+    const quantity = parseInt(sizeQuantities[selectedSize] || "1");
+
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existing = cart.find(i => i.id == product.id && i.size === selectedSize);
 
-    if (existing) {
-      existing.quantity += quantity;
-    } else {
-      cart.push({
-        id: product.id,
-        title: product.title,
-        image: product.images[0],
-        price: product.pricePln,
-        quantity,
-        size: selectedSize
-      });
-    }
+    const updatedCart = cart.filter(i => !(i.id == product.id && i.size === selectedSize));
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    updatedCart.push({
+      id: product.id,
+      title: product.title,
+      image: product.images[0],
+      price: product.pricePln,
+      quantity,
+      size: selectedSize
+    });
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
     showToast("Added to cart!");
     renderCartItems();
   });
 }
+
 
 function showToast(message) {
   const toast = document.getElementById("toast");
